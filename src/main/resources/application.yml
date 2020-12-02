@@ -43,7 +43,7 @@ swagger:
 spring:
   mail:
     host: smtp.qq.com
-    username: 2861742025@qq.com
+    username: 286142025@qq.com
     password: fvnjdblkdruidcgj
     default-encoding: utf-8
     properties.mail.smto.ssl.enable: true
