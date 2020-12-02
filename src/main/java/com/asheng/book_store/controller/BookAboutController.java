@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.BookAbout;
+import com.asheng.book_store.domain.BookAbout;
 import com.asheng.book_store.service.BookAboutService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class BookAboutController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public BookAbout selectOne( id) {
+    public BookAbout selectOne(int id) {
         return this.bookAboutService.queryById(id);
     }
 

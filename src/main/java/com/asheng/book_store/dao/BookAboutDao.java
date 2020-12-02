@@ -1,7 +1,10 @@
 package com.asheng.book_store.dao;
 
 import com.asheng.book_store.domain.BookAbout;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -10,6 +13,8 @@ import java.util.List;
  * @author makejava
  * @since 2020-12-02 14:32:56
  */
+@Repository
+@Mapper
 public interface BookAboutDao {
 
     /**
@@ -18,7 +23,7 @@ public interface BookAboutDao {
      * @param  主键
      * @return 实例对象
      */
-    BookAbout queryById( );
+    BookAbout queryById(int bookId );
 
     /**
      * 查询指定行数据
@@ -60,6 +65,6 @@ public interface BookAboutDao {
      * @param  主键
      * @return 影响行数
      */
-    int deleteById( );
+    int deleteById(int bookId );
 
 }

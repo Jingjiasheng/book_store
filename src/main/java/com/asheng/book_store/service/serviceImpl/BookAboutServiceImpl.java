@@ -27,7 +27,7 @@ public class BookAboutServiceImpl implements BookAboutService {
      */
     @Override
     public BookAbout queryById(int bookId ) {
-        return this.bookAboutDao.queryById();
+        return this.bookAboutDao.queryById(bookId);
     }
 
     /**
@@ -74,6 +74,6 @@ public class BookAboutServiceImpl implements BookAboutService {
      */
     @Override
     public boolean deleteById(int bookId ) {
-        return this.bookAboutDao.deleteById() > 0;
+        return this.bookAboutDao.deleteById(bookId) > 0;
     }
 }

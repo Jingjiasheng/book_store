@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.User;
+import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

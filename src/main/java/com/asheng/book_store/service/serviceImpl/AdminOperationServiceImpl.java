@@ -28,7 +28,7 @@ public class AdminOperationServiceImpl implements AdminOperationService {
      */
     @Override
     public AdminOperation queryById(int adminId ) {
-        return this.adminOperationDao.queryById();
+        return this.adminOperationDao.queryById(adminId);
     }
 
     /**
@@ -74,7 +74,7 @@ public class AdminOperationServiceImpl implements AdminOperationService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById( ) {
-        return this.adminOperationDao.deleteById() > 0;
+    public boolean deleteById(int adminId ) {
+        return this.adminOperationDao.deleteById(adminId) > 0;
     }
 }

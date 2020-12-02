@@ -50,6 +50,6 @@ public interface AdminOperationService {
      * @param  主键
      * @return 是否成功
      */
-    boolean deleteById( );
+    boolean deleteById(int adminId );
 
 }

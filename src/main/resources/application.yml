@@ -1,0 +1,55 @@
+##################################################################################################\u914D\u7F6E\u8FD0\u884C\u7AEF\u53E3
+server:
+  port: 8080
+
+##################################################################################################\u914D\u7F6E\u6570\u636E\u6E90\u4EE5\u53CA\u6570\u636E\u5E93\u8FDE\u63A5\u6C60
+
+spring.datasource:
+  username: root
+  password: 123456
+  url: jdbc:mysql://47.112.246.12:3306/shiro_action?useSSL=false&characterEncoding=UTF8&serverTimezone=UTC
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  type: com.alibaba.druid.pool.DruidDataSource
+
+
+##################################################################################################swagger2\u914D\u7F6E
+swagger:
+  #\u6807\u9898
+  title: spring-boot-starter-swagger
+  #\u63CF\u8FF0
+  description: Starter for swagger 2.x
+  #\u7248\u672C
+  version: 1.4.0.RELEASE
+  #\u8BB8\u53EF\u8BC1
+  license: Apache License, Version 2.0
+  #\u8BB8\u53EF\u8BC1URL
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  #\u670D\u52A1\u6761\u6B3EURL
+  terms-of-service-url: https://github.com/dyc87112/spring-boot-starter-swagger
+  #\u7EF4\u62A4\u4EBA\u4FE1\u606F
+  contact:
+    #\u7EF4\u62A4\u4EBAemail
+    email: j_jiasheng@qq.com
+    #\u7EF4\u62A4\u4EBA
+    name: didi
+    #\u7EF4\u62A4\u4EBAURL
+    url: http://blog.didispace.com
+  #swagger\u626B\u63CF\u7684\u57FA\u7840\u5305\uFF0C\u9ED8\u8BA4\uFF1A\u5168\u626B\u63CF
+  base-package: com.didispace
+  #\u9700\u8981\u5904\u7406\u7684\u57FA\u7840URL\u89C4\u5219\uFF0C\u9ED8\u8BA4\uFF1A/**
+  base-path: /**
+
+#  ############################################################################################\u914D\u7F6E\u90AE\u4EF6\u53D1\u9001\u670D\u52A1\u5668
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 2861742025@qq.com
+    password: fvnjdblkdruidcgj
+    default-encoding: utf-8
+    properties.mail.smto.ssl.enable: true
+
+################################################################################################\u914D\u7F6E\u9A7C\u5CF0\u547D\u540D\u5F00\u542F\u4EE5\u53CAmapper\u6620\u5C04\u8D44\u6E90\u8DEF\u5F84
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml

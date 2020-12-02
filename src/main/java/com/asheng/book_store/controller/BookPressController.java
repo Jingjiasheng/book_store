@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.BookPress;
+import com.asheng.book_store.domain.BookPress;
 import com.asheng.book_store.service.BookPressService;
 import org.springframework.web.bind.annotation.*;
 

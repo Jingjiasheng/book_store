@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.Permission;
+import com.asheng.book_store.domain.Permission;
 import com.asheng.book_store.service.PermissionService;
 import org.springframework.web.bind.annotation.*;
 

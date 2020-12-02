@@ -1,7 +1,10 @@
 package com.asheng.book_store.dao;
 
 import com.asheng.book_store.domain.BookState;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -10,6 +13,8 @@ import java.util.List;
  * @author makejava
  * @since 2020-12-02 14:32:56
  */
+@Repository
+@Mapper
 public interface BookStateDao {
 
     /**

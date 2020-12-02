@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.AdminRole;
+import com.asheng.book_store.domain.AdminRole;
 import com.asheng.book_store.service.AdminRoleService;
 import org.springframework.web.bind.annotation.*;
 

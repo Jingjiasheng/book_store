@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.entity.City;
+import com.asheng.book_store.domain.City;
 import com.asheng.book_store.service.CityService;
 import org.springframework.web.bind.annotation.*;
 

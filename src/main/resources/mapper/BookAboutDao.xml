@@ -20,7 +20,7 @@
         select
           book_id, book_old_degree, book_purchase_channels, book_use_age, book_state_id, book_seller_id, book_Buyer_id, book_detailed_address, book_city_id
         from book_store.book_about
-        where  = #{}
+        where book_id = #{bookId}
     </select>
 
     <!--查询指定行数据-->
@@ -110,7 +110,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from book_store.book_about where  = #{}
+        delete from book_store.book_about where book_id = #{bookId}
     </delete>
 
 </mapper>

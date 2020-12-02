@@ -17,7 +17,7 @@
         select
           admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
         from book_store.admin_operation
-        where  = #{}
+        where admin_id  = #{adminId}
     </select>
 
     <!--查询指定行数据-->
@@ -89,7 +89,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from book_store.admin_operation where  = #{}
+        delete from book_store.admin_operation where admin_id  = #{adminId}
     </delete>
 
 </mapper>
