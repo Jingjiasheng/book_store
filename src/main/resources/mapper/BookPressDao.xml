@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.BookPressDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.BookPress">
+        <!--@Table book_press-->
+        <result property="bookPressId" column="book_press_id" jdbcType="INTEGER"/>
+        <result property="bookPressName" column="book_press_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          book_press_id, book_press_name
+        from book_store.book_press
+        where book_press_id = #{bookPressId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          book_press_id, book_press_name
+        from book_store.book_press
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          book_press_id, book_press_name
+        from book_store.book_press
+        <where>
+            <if test="bookPressId != null">
+                and book_press_id = #{bookPressId}
+            </if>
+            <if test="bookPressName != null and bookPressName != ''">
+                and book_press_name = #{bookPressName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bookPressId" useGeneratedKeys="true">
+        insert into book_store.book_press(book_press_name)
+        values (#{bookPressName})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.book_press
+        <set>
+            <if test="bookPressName != null and bookPressName != ''">
+                book_press_name = #{bookPressName},
+            </if>
+        </set>
+        where book_press_id = #{bookPressId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.book_press where book_press_id = #{bookPressId}
+    </delete>
+
+</mapper>
