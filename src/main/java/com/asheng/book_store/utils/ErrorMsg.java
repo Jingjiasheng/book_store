@@ -1,24 +1,33 @@
 package com.asheng.book_store.utils;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 统一返回结果集实体类
  * @param <T> 返回数据对象
  */
+@ApiModel("统一的响应数据结果集类")
 @Data
-public class ErrorMsg<T> {
+public class ErrorMsg<T> implements Serializable {
 
     //错误码
+    @ApiModelProperty(value = "返回数据请求的响应码")
     private Integer errorCode;
 
     //错误信息，一般为前端提示信息
+    @ApiModelProperty(value = "返回请求结果成功与否的简要信息")
     private String errorMsg;
 
     //返回值，一般为成功后返回的数据
+    @ApiModelProperty(value = "返回对象")
     private T data;
 
     //错误详情，一般为失败后的详细原因，如空指针之类的
+    @ApiModelProperty(value = "返回请求结果出错时的的详细信息")
     private String errorDetail;
 
     public ErrorMsg() {}

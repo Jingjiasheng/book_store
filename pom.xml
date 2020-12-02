@@ -76,6 +76,12 @@
             <version>1.9.0.RELEASE</version>
         </dependency>
 
+<!--        =====================================================================================================引入swagger2依赖涉及到相关校验，必须添加这个依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

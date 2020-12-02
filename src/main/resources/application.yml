@@ -24,17 +24,17 @@ swagger:
   #许可证链接
   license-url: https://www.apache.org/licenses/LICENSE-2.0.html
   #\u670D\u52A1\u6761\u6B3EURL
-  terms-of-service-url: https://github.com/dyc87112/spring-boot-starter-swagger
+  terms-of-service-url: https://github.com/Jingjiasheng/book_store
   #维护人员信息
   contact:
     #维护人员邮箱
     email: j_jiasheng@qq.com
     #维护人姓名
-    name: didi
+    name: J_jiasheng
     #维护人信息连接
-    url: http://blog.didispace.com
+    url: https://github.com/Jingjiasheng/book_store
   #swagger基础包
-  base-package: com.sheng.book_store.controller
+  base-package: com.asheng.book_store.controller
   #默认访问url
   base-path: /**
 
