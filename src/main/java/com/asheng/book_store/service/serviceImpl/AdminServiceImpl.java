@@ -1,7 +1,7 @@
 package com.asheng.book_store.service.serviceImpl;
 
-import com.asheng.book_store.service.entity.Admin;
-import com.asheng.book_store.service.dao.AdminDao;
+import com.asheng.book_store.dao.AdminDao;
+import com.asheng.book_store.domain.Admin;
 import com.asheng.book_store.service.AdminService;
 import org.springframework.stereotype.Service;
 

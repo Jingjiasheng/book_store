@@ -1,7 +1,8 @@
 package com.asheng.book_store.service.serviceImpl;
 
-import com.asheng.book_store.service.entity.AdminOperation;
-import com.asheng.book_store.service.dao.AdminOperationDao;
+
+import com.asheng.book_store.dao.AdminOperationDao;
+import com.asheng.book_store.domain.AdminOperation;
 import com.asheng.book_store.service.AdminOperationService;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class AdminOperationServiceImpl implements AdminOperationService {
      * @return 实例对象
      */
     @Override
-    public AdminOperation queryById( ) {
+    public AdminOperation queryById(int adminId ) {
         return this.adminOperationDao.queryById();
     }
 
@@ -63,7 +64,7 @@ public class AdminOperationServiceImpl implements AdminOperationService {
     @Override
     public AdminOperation update(AdminOperation adminOperation) {
         this.adminOperationDao.update(adminOperation);
-        return this.queryById(adminOperation.get());
+        return this.queryById(adminOperation.getAdminId());
     }
 
     /**

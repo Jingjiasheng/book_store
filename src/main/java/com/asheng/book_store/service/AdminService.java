@@ -1,6 +1,6 @@
 package com.asheng.book_store.service;
 
-import com.asheng.book_store.service.entity.Admin;
+import com.asheng.book_store.domain.Admin;
 import java.util.List;
 
 /**

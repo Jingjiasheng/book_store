@@ -1,6 +1,6 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.service.entity.AdminOperation;
+import com.asheng.book_store.domain.AdminOperation;
 import com.asheng.book_store.service.AdminOperationService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class AdminOperationController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public AdminOperation selectOne( id) {
+    public AdminOperation selectOne(int id) {
         return this.adminOperationService.queryById(id);
     }
 

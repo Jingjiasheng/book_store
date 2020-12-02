@@ -1,25 +1,25 @@
 package com.asheng.book_store.controller;
 
-import com.asheng.book_store.domain.Admin;
-import com.asheng.book_store.service.AdminService;
+import com.asheng.book_store.domain.entity.BookPress;
+import com.asheng.book_store.service.BookPressService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
- * (Admin)表控制层
+ * (BookPress)表控制层
  *
  * @author makejava
- * @since 2020-12-02 14:34:35
+ * @since 2020-12-02 14:35:25
  */
 @RestController
-@RequestMapping("admin")
-public class AdminController {
+@RequestMapping("bookPress")
+public class BookPressController {
     /**
      * 服务对象
      */
     @Resource
-    private AdminService adminService;
+    private BookPressService bookPressService;
 
     /**
      * 通过主键查询单条数据
@@ -28,8 +28,8 @@ public class AdminController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public Admin selectOne(Integer id) {
-        return this.adminService.queryById(id);
+    public BookPress selectOne(Integer id) {
+        return this.bookPressService.queryById(id);
     }
 
 }

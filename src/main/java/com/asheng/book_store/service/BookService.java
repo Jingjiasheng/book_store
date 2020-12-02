@@ -1,23 +1,25 @@
 package com.asheng.book_store.service;
 
-import com.asheng.book_store.domain.AdminOperation;
+
+import com.asheng.book_store.domain.Book;
+
 import java.util.List;
 
 /**
- * (AdminOperation)表服务接口
+ * (Book)表服务接口
  *
  * @author makejava
- * @since 2020-12-02 14:35:13
+ * @since 2020-12-02 14:35:19
  */
-public interface AdminOperationService {
+public interface BookService {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param  主键
+     * @param bookId 主键
      * @return 实例对象
      */
-    AdminOperation queryById(int adminId );
+    Book queryById(Integer bookId);
 
     /**
      * 查询多条数据
@@ -26,30 +28,30 @@ public interface AdminOperationService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<AdminOperation> queryAllByLimit(int offset, int limit);
+    List<Book> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param adminOperation 实例对象
+     * @param book 实例对象
      * @return 实例对象
      */
-    AdminOperation insert(AdminOperation adminOperation);
+    Book insert(Book book);
 
     /**
      * 修改数据
      *
-     * @param adminOperation 实例对象
+     * @param book 实例对象
      * @return 实例对象
      */
-    AdminOperation update(AdminOperation adminOperation);
+    Book update(Book book);
 
     /**
      * 通过主键删除数据
      *
-     * @param  主键
+     * @param bookId 主键
      * @return 是否成功
      */
-    boolean deleteById( );
+    boolean deleteById(Integer bookId);
 
 }
