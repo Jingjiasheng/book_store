@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.User">
+        <!--@Table user-->
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userNickname" column="user_nickname" jdbcType="VARCHAR"/>
+        <result property="userLoginName" column="user_login_name" jdbcType="VARCHAR"/>
+        <result property="userTelephoneNumber" column="user_telephone_number" jdbcType="VARCHAR"/>
+        <result property="userLoginPassword" column="user_login_password" jdbcType="VARCHAR"/>
+        <result property="userLoginSalt" column="user_login_salt" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userIdCardNumber" column="user_id_card_number" jdbcType="VARCHAR"/>
+        <result property="userAlipayAccount" column="user_alipay_account" jdbcType="VARCHAR"/>
+        <result property="userWechatPaymentAccount" column="user_wechat_payment_account" jdbcType="VARCHAR"/>
+        <result property="userRegistrationTime" column="user_registration_time" jdbcType="VARCHAR"/>
+        <result property="userCredit" column="user_credit" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          user_id, user_nickname, user_login_name, user_telephone_number, user_login_password, user_login_salt, user_name, user_id_card_number, user_alipay_account, user_wechat_payment_account, user_registration_time, user_credit
+        from book_store.user
+        where user_id = #{userId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          user_id, user_nickname, user_login_name, user_telephone_number, user_login_password, user_login_salt, user_name, user_id_card_number, user_alipay_account, user_wechat_payment_account, user_registration_time, user_credit
+        from book_store.user
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          user_id, user_nickname, user_login_name, user_telephone_number, user_login_password, user_login_salt, user_name, user_id_card_number, user_alipay_account, user_wechat_payment_account, user_registration_time, user_credit
+        from book_store.user
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="userNickname != null and userNickname != ''">
+                and user_nickname = #{userNickname}
+            </if>
+            <if test="userLoginName != null and userLoginName != ''">
+                and user_login_name = #{userLoginName}
+            </if>
+            <if test="userTelephoneNumber != null and userTelephoneNumber != ''">
+                and user_telephone_number = #{userTelephoneNumber}
+            </if>
+            <if test="userLoginPassword != null and userLoginPassword != ''">
+                and user_login_password = #{userLoginPassword}
+            </if>
+            <if test="userLoginSalt != null and userLoginSalt != ''">
+                and user_login_salt = #{userLoginSalt}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="userIdCardNumber != null and userIdCardNumber != ''">
+                and user_id_card_number = #{userIdCardNumber}
+            </if>
+            <if test="userAlipayAccount != null and userAlipayAccount != ''">
+                and user_alipay_account = #{userAlipayAccount}
+            </if>
+            <if test="userWechatPaymentAccount != null and userWechatPaymentAccount != ''">
+                and user_wechat_payment_account = #{userWechatPaymentAccount}
+            </if>
+            <if test="userRegistrationTime != null and userRegistrationTime != ''">
+                and user_registration_time = #{userRegistrationTime}
+            </if>
+            <if test="userCredit != null">
+                and user_credit = #{userCredit}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
+        insert into book_store.user(user_nickname, user_login_name, user_telephone_number, user_login_password, user_login_salt, user_name, user_id_card_number, user_alipay_account, user_wechat_payment_account, user_registration_time, user_credit)
+        values (#{userNickname}, #{userLoginName}, #{userTelephoneNumber}, #{userLoginPassword}, #{userLoginSalt}, #{userName}, #{userIdCardNumber}, #{userAlipayAccount}, #{userWechatPaymentAccount}, #{userRegistrationTime}, #{userCredit})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.user
+        <set>
+            <if test="userNickname != null and userNickname != ''">
+                user_nickname = #{userNickname},
+            </if>
+            <if test="userLoginName != null and userLoginName != ''">
+                user_login_name = #{userLoginName},
+            </if>
+            <if test="userTelephoneNumber != null and userTelephoneNumber != ''">
+                user_telephone_number = #{userTelephoneNumber},
+            </if>
+            <if test="userLoginPassword != null and userLoginPassword != ''">
+                user_login_password = #{userLoginPassword},
+            </if>
+            <if test="userLoginSalt != null and userLoginSalt != ''">
+                user_login_salt = #{userLoginSalt},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userIdCardNumber != null and userIdCardNumber != ''">
+                user_id_card_number = #{userIdCardNumber},
+            </if>
+            <if test="userAlipayAccount != null and userAlipayAccount != ''">
+                user_alipay_account = #{userAlipayAccount},
+            </if>
+            <if test="userWechatPaymentAccount != null and userWechatPaymentAccount != ''">
+                user_wechat_payment_account = #{userWechatPaymentAccount},
+            </if>
+            <if test="userRegistrationTime != null and userRegistrationTime != ''">
+                user_registration_time = #{userRegistrationTime},
+            </if>
+            <if test="userCredit != null">
+                user_credit = #{userCredit},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.user where user_id = #{userId}
+    </delete>
+
+</mapper>

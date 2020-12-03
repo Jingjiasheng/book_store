@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.BookStateDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.BookState">
+        <!--@Table book_state-->
+        <result property="bookStateId" column="book_state_id" jdbcType="INTEGER"/>
+        <result property="bookStateExplain" column="book_state_explain" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          book_state_id, book_state_explain
+        from book_store.book_state
+        where book_state_id = #{bookStateId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          book_state_id, book_state_explain
+        from book_store.book_state
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          book_state_id, book_state_explain
+        from book_store.book_state
+        <where>
+            <if test="bookStateId != null">
+                and book_state_id = #{bookStateId}
+            </if>
+            <if test="bookStateExplain != null and bookStateExplain != ''">
+                and book_state_explain = #{bookStateExplain}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bookStateId" useGeneratedKeys="true">
+        insert into book_store.book_state(book_state_explain)
+        values (#{bookStateExplain})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.book_state
+        <set>
+            <if test="bookStateExplain != null and bookStateExplain != ''">
+                book_state_explain = #{bookStateExplain},
+            </if>
+        </set>
+        where book_state_id = #{bookStateId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.book_state where book_state_id = #{bookStateId}
+    </delete>
+
+</mapper>

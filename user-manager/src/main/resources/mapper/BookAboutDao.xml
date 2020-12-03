@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.BookAboutDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.BookAbout">
+        <!--@Table book_about-->
+        <result property="bookId" column="book_id" jdbcType="INTEGER"/>
+        <result property="bookOldDegree" column="book_old_degree" jdbcType="VARCHAR"/>
+        <result property="bookPurchaseChannels" column="book_purchase_channels" jdbcType="VARCHAR"/>
+        <result property="bookUseAge" column="book_use_age" jdbcType="OTHER"/>
+        <result property="bookStateId" column="book_state_id" jdbcType="INTEGER"/>
+        <result property="bookSellerId" column="book_seller_id" jdbcType="INTEGER"/>
+        <result property="bookBuyerId" column="book_Buyer_id" jdbcType="INTEGER"/>
+        <result property="bookDetailedAddress" column="book_detailed_address" jdbcType="VARCHAR"/>
+        <result property="bookCityId" column="book_city_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          book_id, book_old_degree, book_purchase_channels, book_use_age, book_state_id, book_seller_id, book_Buyer_id, book_detailed_address, book_city_id
+        from book_store.book_about
+        where book_id = #{bookId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          book_id, book_old_degree, book_purchase_channels, book_use_age, book_state_id, book_seller_id, book_Buyer_id, book_detailed_address, book_city_id
+        from book_store.book_about
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          book_id, book_old_degree, book_purchase_channels, book_use_age, book_state_id, book_seller_id, book_Buyer_id, book_detailed_address, book_city_id
+        from book_store.book_about
+        <where>
+            <if test="bookId != null">
+                and book_id = #{bookId}
+            </if>
+            <if test="bookOldDegree != null and bookOldDegree != ''">
+                and book_old_degree = #{bookOldDegree}
+            </if>
+            <if test="bookPurchaseChannels != null and bookPurchaseChannels != ''">
+                and book_purchase_channels = #{bookPurchaseChannels}
+            </if>
+            <if test="bookUseAge != null">
+                and book_use_age = #{bookUseAge}
+            </if>
+            <if test="bookStateId != null">
+                and book_state_id = #{bookStateId}
+            </if>
+            <if test="bookSellerId != null">
+                and book_seller_id = #{bookSellerId}
+            </if>
+            <if test="bookBuyerId != null">
+                and book_Buyer_id = #{bookBuyerId}
+            </if>
+            <if test="bookDetailedAddress != null and bookDetailedAddress != ''">
+                and book_detailed_address = #{bookDetailedAddress}
+            </if>
+            <if test="bookCityId != null">
+                and book_city_id = #{bookCityId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into book_store.book_about(book_id, book_old_degree, book_purchase_channels, book_use_age, book_state_id, book_seller_id, book_Buyer_id, book_detailed_address, book_city_id)
+        values (#{bookId}, #{bookOldDegree}, #{bookPurchaseChannels}, #{bookUseAge}, #{bookStateId}, #{bookSellerId}, #{bookBuyerId}, #{bookDetailedAddress}, #{bookCityId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.book_about
+        <set>
+            <if test="bookId != null">
+                book_id = #{bookId},
+            </if>
+            <if test="bookOldDegree != null and bookOldDegree != ''">
+                book_old_degree = #{bookOldDegree},
+            </if>
+            <if test="bookPurchaseChannels != null and bookPurchaseChannels != ''">
+                book_purchase_channels = #{bookPurchaseChannels},
+            </if>
+            <if test="bookUseAge != null">
+                book_use_age = #{bookUseAge},
+            </if>
+            <if test="bookStateId != null">
+                book_state_id = #{bookStateId},
+            </if>
+            <if test="bookSellerId != null">
+                book_seller_id = #{bookSellerId},
+            </if>
+            <if test="bookBuyerId != null">
+                book_Buyer_id = #{bookBuyerId},
+            </if>
+            <if test="bookDetailedAddress != null and bookDetailedAddress != ''">
+                book_detailed_address = #{bookDetailedAddress},
+            </if>
+            <if test="bookCityId != null">
+                book_city_id = #{bookCityId},
+            </if>
+        </set>
+        where  = #{}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.book_about where book_id = #{bookId}
+    </delete>
+
+</mapper>

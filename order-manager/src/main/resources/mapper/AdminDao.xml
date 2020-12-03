@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.AdminDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.Admin">
+        <!--@Table admin-->
+        <result property="adminId" column="admin_id" jdbcType="INTEGER"/>
+        <result property="adminName" column="admin_name" jdbcType="VARCHAR"/>
+        <result property="adminIdCardNumber" column="admin_id_card_number" jdbcType="VARCHAR"/>
+        <result property="adminLoginName" column="admin_login_name" jdbcType="VARCHAR"/>
+        <result property="adminLoginPassword" column="admin_login_password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          admin_id, admin_name, admin_id_card_number, admin_login_name, admin_login_password
+        from book_store.admin
+        where admin_id = #{adminId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          admin_id, admin_name, admin_id_card_number, admin_login_name, admin_login_password
+        from book_store.admin
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          admin_id, admin_name, admin_id_card_number, admin_login_name, admin_login_password
+        from book_store.admin
+        <where>
+            <if test="adminId != null">
+                and admin_id = #{adminId}
+            </if>
+            <if test="adminName != null and adminName != ''">
+                and admin_name = #{adminName}
+            </if>
+            <if test="adminIdCardNumber != null and adminIdCardNumber != ''">
+                and admin_id_card_number = #{adminIdCardNumber}
+            </if>
+            <if test="adminLoginName != null and adminLoginName != ''">
+                and admin_login_name = #{adminLoginName}
+            </if>
+            <if test="adminLoginPassword != null and adminLoginPassword != ''">
+                and admin_login_password = #{adminLoginPassword}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="adminId" useGeneratedKeys="true">
+        insert into book_store.admin(admin_name, admin_id_card_number, admin_login_name, admin_login_password)
+        values (#{adminName}, #{adminIdCardNumber}, #{adminLoginName}, #{adminLoginPassword})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.admin
+        <set>
+            <if test="adminName != null and adminName != ''">
+                admin_name = #{adminName},
+            </if>
+            <if test="adminIdCardNumber != null and adminIdCardNumber != ''">
+                admin_id_card_number = #{adminIdCardNumber},
+            </if>
+            <if test="adminLoginName != null and adminLoginName != ''">
+                admin_login_name = #{adminLoginName},
+            </if>
+            <if test="adminLoginPassword != null and adminLoginPassword != ''">
+                admin_login_password = #{adminLoginPassword},
+            </if>
+        </set>
+        where admin_id = #{adminId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.admin where admin_id = #{adminId}
+    </delete>
+
+</mapper>

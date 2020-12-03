@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.BookDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.Book">
+        <!--@Table book-->
+        <result property="bookId" column="book_id" jdbcType="INTEGER"/>
+        <result property="bookIsbn" column="book_isbn" jdbcType="VARCHAR"/>
+        <result property="bookName" column="book_name" jdbcType="VARCHAR"/>
+        <result property="bookCategoryId" column="book_category_id" jdbcType="INTEGER"/>
+        <result property="bookAuthor" column="book_author" jdbcType="VARCHAR"/>
+        <result property="booPressId" column="boo_press_id" jdbcType="INTEGER"/>
+        <result property="bookPublicationTime" column="book_publication_time" jdbcType="VARCHAR"/>
+        <result property="bookRemarks" column="book_remarks" jdbcType="VARCHAR"/>
+        <result property="bookOriginalPrice" column="book_original_price" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          book_id, book_isbn, book_name, book_category_id, book_author, boo_press_id, book_publication_time, book_remarks, book_original_price
+        from book_store.book
+        where book_id = #{bookId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          book_id, book_isbn, book_name, book_category_id, book_author, boo_press_id, book_publication_time, book_remarks, book_original_price
+        from book_store.book
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          book_id, book_isbn, book_name, book_category_id, book_author, boo_press_id, book_publication_time, book_remarks, book_original_price
+        from book_store.book
+        <where>
+            <if test="bookId != null">
+                and book_id = #{bookId}
+            </if>
+            <if test="bookIsbn != null and bookIsbn != ''">
+                and book_isbn = #{bookIsbn}
+            </if>
+            <if test="bookName != null and bookName != ''">
+                and book_name = #{bookName}
+            </if>
+            <if test="bookCategoryId != null">
+                and book_category_id = #{bookCategoryId}
+            </if>
+            <if test="bookAuthor != null and bookAuthor != ''">
+                and book_author = #{bookAuthor}
+            </if>
+            <if test="booPressId != null">
+                and boo_press_id = #{booPressId}
+            </if>
+            <if test="bookPublicationTime != null and bookPublicationTime != ''">
+                and book_publication_time = #{bookPublicationTime}
+            </if>
+            <if test="bookRemarks != null and bookRemarks != ''">
+                and book_remarks = #{bookRemarks}
+            </if>
+            <if test="bookOriginalPrice != null">
+                and book_original_price = #{bookOriginalPrice}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bookId" useGeneratedKeys="true">
+        insert into book_store.book(book_isbn, book_name, book_category_id, book_author, boo_press_id, book_publication_time, book_remarks, book_original_price)
+        values (#{bookIsbn}, #{bookName}, #{bookCategoryId}, #{bookAuthor}, #{booPressId}, #{bookPublicationTime}, #{bookRemarks}, #{bookOriginalPrice})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.book
+        <set>
+            <if test="bookIsbn != null and bookIsbn != ''">
+                book_isbn = #{bookIsbn},
+            </if>
+            <if test="bookName != null and bookName != ''">
+                book_name = #{bookName},
+            </if>
+            <if test="bookCategoryId != null">
+                book_category_id = #{bookCategoryId},
+            </if>
+            <if test="bookAuthor != null and bookAuthor != ''">
+                book_author = #{bookAuthor},
+            </if>
+            <if test="booPressId != null">
+                boo_press_id = #{booPressId},
+            </if>
+            <if test="bookPublicationTime != null and bookPublicationTime != ''">
+                book_publication_time = #{bookPublicationTime},
+            </if>
+            <if test="bookRemarks != null and bookRemarks != ''">
+                book_remarks = #{bookRemarks},
+            </if>
+            <if test="bookOriginalPrice != null">
+                book_original_price = #{bookOriginalPrice},
+            </if>
+        </set>
+        where book_id = #{bookId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.book where book_id = #{bookId}
+    </delete>
+
+</mapper>

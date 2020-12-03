@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.BookCategoryDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.BookCategory">
+        <!--@Table book_category-->
+        <result property="bookCategoryId" column="book_category_id" jdbcType="INTEGER"/>
+        <result property="bookCategoryExplain" column="book_category_explain" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          book_category_id, book_category_explain
+        from book_store.book_category
+        where book_category_id = #{bookCategoryId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          book_category_id, book_category_explain
+        from book_store.book_category
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          book_category_id, book_category_explain
+        from book_store.book_category
+        <where>
+            <if test="bookCategoryId != null">
+                and book_category_id = #{bookCategoryId}
+            </if>
+            <if test="bookCategoryExplain != null and bookCategoryExplain != ''">
+                and book_category_explain = #{bookCategoryExplain}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bookCategoryId" useGeneratedKeys="true">
+        insert into book_store.book_category(book_category_explain)
+        values (#{bookCategoryExplain})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.book_category
+        <set>
+            <if test="bookCategoryExplain != null and bookCategoryExplain != ''">
+                book_category_explain = #{bookCategoryExplain},
+            </if>
+        </set>
+        where book_category_id = #{bookCategoryId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.book_category where book_category_id = #{bookCategoryId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.OrderStateDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.OrderState">
+        <!--@Table order_state-->
+        <result property="orderStateId" column="order_state_id" jdbcType="INTEGER"/>
+        <result property="orderStateExplain" column="order_state_explain" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          order_state_id, order_state_explain
+        from book_store.order_state
+        where order_state_id = #{orderStateId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          order_state_id, order_state_explain
+        from book_store.order_state
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          order_state_id, order_state_explain
+        from book_store.order_state
+        <where>
+            <if test="orderStateId != null">
+                and order_state_id = #{orderStateId}
+            </if>
+            <if test="orderStateExplain != null and orderStateExplain != ''">
+                and order_state_explain = #{orderStateExplain}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderStateId" useGeneratedKeys="true">
+        insert into book_store.order_state(order_state_explain)
+        values (#{orderStateExplain})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.order_state
+        <set>
+            <if test="orderStateExplain != null and orderStateExplain != ''">
+                order_state_explain = #{orderStateExplain},
+            </if>
+        </set>
+        where order_state_id = #{orderStateId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.order_state where order_state_id = #{orderStateId}
+    </delete>
+
+</mapper>

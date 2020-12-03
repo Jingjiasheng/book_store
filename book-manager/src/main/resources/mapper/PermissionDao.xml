@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.PermissionDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.Permission">
+        <!--@Table permission-->
+        <result property="permissionId" column="permission_id" jdbcType="INTEGER"/>
+        <result property="permissionName" column="permission_name" jdbcType="VARCHAR"/>
+        <result property="permissionUrl" column="permission_url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          permission_id, permission_name, permission_url
+        from book_store.permission
+        where permission_id = #{permissionId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          permission_id, permission_name, permission_url
+        from book_store.permission
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          permission_id, permission_name, permission_url
+        from book_store.permission
+        <where>
+            <if test="permissionId != null">
+                and permission_id = #{permissionId}
+            </if>
+            <if test="permissionName != null and permissionName != ''">
+                and permission_name = #{permissionName}
+            </if>
+            <if test="permissionUrl != null and permissionUrl != ''">
+                and permission_url = #{permissionUrl}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="permissionId" useGeneratedKeys="true">
+        insert into book_store.permission(permission_name, permission_url)
+        values (#{permissionName}, #{permissionUrl})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.permission
+        <set>
+            <if test="permissionName != null and permissionName != ''">
+                permission_name = #{permissionName},
+            </if>
+            <if test="permissionUrl != null and permissionUrl != ''">
+                permission_url = #{permissionUrl},
+            </if>
+        </set>
+        where permission_id = #{permissionId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.permission where permission_id = #{permissionId}
+    </delete>
+
+</mapper>

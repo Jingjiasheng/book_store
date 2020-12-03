@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.AdminOperationGradeDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.AdminOperationGrade">
+        <!--@Table admin_operation_grade-->
+        <result property="adminOperationGradeId" column="admin_operation_grade_id" jdbcType="INTEGER"/>
+        <result property="adminOperationGradeExplain" column="admin_operation_grade_explain" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          admin_operation_grade_id, admin_operation_grade_explain
+        from book_store.admin_operation_grade
+        where admin_operation_grade_id = #{adminOperationGradeId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          admin_operation_grade_id, admin_operation_grade_explain
+        from book_store.admin_operation_grade
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          admin_operation_grade_id, admin_operation_grade_explain
+        from book_store.admin_operation_grade
+        <where>
+            <if test="adminOperationGradeId != null">
+                and admin_operation_grade_id = #{adminOperationGradeId}
+            </if>
+            <if test="adminOperationGradeExplain != null and adminOperationGradeExplain != ''">
+                and admin_operation_grade_explain = #{adminOperationGradeExplain}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="adminOperationGradeId" useGeneratedKeys="true">
+        insert into book_store.admin_operation_grade(admin_operation_grade_explain)
+        values (#{adminOperationGradeExplain})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.admin_operation_grade
+        <set>
+            <if test="adminOperationGradeExplain != null and adminOperationGradeExplain != ''">
+                admin_operation_grade_explain = #{adminOperationGradeExplain},
+            </if>
+        </set>
+        where admin_operation_grade_id = #{adminOperationGradeId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.admin_operation_grade where admin_operation_grade_id = #{adminOperationGradeId}
+    </delete>
+
+</mapper>

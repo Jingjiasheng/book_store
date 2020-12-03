@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asheng.book_store.dao.AdminOperationDao">
+
+    <resultMap id="BaseResultMap" type="com.asheng.book_store.domain.AdminOperation">
+        <!--@Table admin_operation-->
+        <result property="adminId" column="admin_id" jdbcType="INTEGER"/>
+        <result property="adminOperationTime" column="admin_operation_time" jdbcType="VARCHAR"/>
+        <result property="adminOperationUrl" column="admin_operation_url" jdbcType="VARCHAR"/>
+        <result property="adminOperationResultCode" column="admin_operation_result_code" jdbcType="VARCHAR"/>
+        <result property="adminOperationGradeId" column="admin_operation_grade_id" jdbcType="INTEGER"/>
+        <result property="adminOperationIp" column="admin_operation_ip" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+        from book_store.admin_operation
+        where admin_id  = #{adminId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+        from book_store.admin_operation
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+        from book_store.admin_operation
+        <where>
+            <if test="adminId != null">
+                and admin_id = #{adminId}
+            </if>
+            <if test="adminOperationTime != null and adminOperationTime != ''">
+                and admin_operation_time = #{adminOperationTime}
+            </if>
+            <if test="adminOperationUrl != null and adminOperationUrl != ''">
+                and admin_operation_url = #{adminOperationUrl}
+            </if>
+            <if test="adminOperationResultCode != null and adminOperationResultCode != ''">
+                and admin_operation_result_code = #{adminOperationResultCode}
+            </if>
+            <if test="adminOperationGradeId != null">
+                and admin_operation_grade_id = #{adminOperationGradeId}
+            </if>
+            <if test="adminOperationIp != null and adminOperationIp != ''">
+                and admin_operation_ip = #{adminOperationIp}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into book_store.admin_operation(admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip)
+        values (#{adminId}, #{adminOperationTime}, #{adminOperationUrl}, #{adminOperationResultCode}, #{adminOperationGradeId}, #{adminOperationIp})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update book_store.admin_operation
+        <set>
+            <if test="adminId != null">
+                admin_id = #{adminId},
+            </if>
+            <if test="adminOperationTime != null and adminOperationTime != ''">
+                admin_operation_time = #{adminOperationTime},
+            </if>
+            <if test="adminOperationUrl != null and adminOperationUrl != ''">
+                admin_operation_url = #{adminOperationUrl},
+            </if>
+            <if test="adminOperationResultCode != null and adminOperationResultCode != ''">
+                admin_operation_result_code = #{adminOperationResultCode},
+            </if>
+            <if test="adminOperationGradeId != null">
+                admin_operation_grade_id = #{adminOperationGradeId},
+            </if>
+            <if test="adminOperationIp != null and adminOperationIp != ''">
+                admin_operation_ip = #{adminOperationIp},
+            </if>
+        </set>
+        where  = #{}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from book_store.admin_operation where admin_id  = #{adminId}
+    </delete>
+
+</mapper>
