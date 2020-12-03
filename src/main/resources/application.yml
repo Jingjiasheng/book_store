@@ -1,14 +1,33 @@
 ##################################################################################################应用程序端口
 server:
   port: 8080
+################## 项目基本配置 ################
+  servlet:
+    # 项目访问路径前缀
+    context-path: /book_store
 
 ##################################################################################################设置数据源
-spring.datasource:
-  username: root
-  password: 123456
-  url: jdbc:mysql://47.112.246.12:3306/shiro_action?useSSL=false&characterEncoding=UTF8&serverTimezone=UTC
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  type: com.alibaba.druid.pool.DruidDataSource
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://47.112.246.12:3306/shiro_action?useSSL=false&characterEncoding=UTF8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  # 注册到Eureka的服务名
+  application:
+    name: 用户操作
+
+  #######设置邮箱
+  mail:
+    host: smtp.qq.com
+    username: 286142025@qq.com
+    password: fvnjdblkdruidcgj
+    default-encoding: utf-8
+    properties.mail.smto.ssl.enable: true
+
+
 
 
 ##################################################################################################swagger2设置
@@ -38,17 +57,15 @@ swagger:
   #默认访问url
   base-path: /**
 
-#  ############################################################################################设置邮箱
-spring:
-  mail:
-    host: smtp.qq.com
-    username: 286142025@qq.com
-    password: fvnjdblkdruidcgj
-    default-encoding: utf-8
-    properties.mail.smto.ssl.enable: true
-
 ################################################################################################设置mybatis的驼峰命名以及xml文件的映射位置上
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
+
+
+################## Eureka配置 ################
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka,http://localhost:8760/eureka
