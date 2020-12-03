@@ -11,7 +11,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://47.112.246.12:3306/shiro_action?useSSL=false&characterEncoding=UTF8&serverTimezone=UTC
+    url: jdbc:mysql://42.192.84.4:3306/book-store?useSSL=false&characterEncoding=UTF8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
