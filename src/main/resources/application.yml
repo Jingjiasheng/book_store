@@ -68,4 +68,4 @@ mybatis:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka,http://localhost:8760/eureka
+      defaultZone: http://42.192.84.4:8761/eureka,http://42.192.84.4:8760/eureka
