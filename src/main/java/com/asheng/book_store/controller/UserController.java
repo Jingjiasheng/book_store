@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
- * (User)表控制层
+ * (User)用户控制层
  *
  * @author makejava
  * @since 2020-12-02 14:35:33
  */
-@Api(tags = "前台普通用户进行操作的相关API",value = "这个是values，并不知道有什么作用！")
+@Api(tags = "前台普通用户进行用户操作的相关API",value = "这个是values，并不知道有什么作用！")
 @RestController
 @RequestMapping("user")
 public class UserController {

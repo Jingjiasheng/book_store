@@ -10,9 +10,13 @@ import java.io.Serializable;
  */
 public class BookCategory implements Serializable {
     private static final long serialVersionUID = 798701299824803130L;
-    
+    /**
+     * 书籍类别ID
+     */
     private Integer bookCategoryId;
-    
+    /**
+     * 书籍类别名称
+     */
     private String bookCategoryExplain;
 
 

@@ -20,7 +20,7 @@ public interface BookAboutDao {
     /**
      * 通过ID查询单条数据
      *
-     * @param  主键
+     * @param   bookId 主键
      * @return 实例对象
      */
     BookAbout queryById(int bookId );
@@ -62,7 +62,7 @@ public interface BookAboutDao {
     /**
      * 通过主键删除数据
      *
-     * @param  主键
+     * @param  bookId 主键
      * @return 影响行数
      */
     int deleteById(int bookId );

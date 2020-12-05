@@ -10,9 +10,13 @@ import java.io.Serializable;
  */
 public class BookPress implements Serializable {
     private static final long serialVersionUID = 462806115189442181L;
-    
+    /**
+     * 书籍出版社ID
+     */
     private Integer bookPressId;
-    
+    /**
+     * 书籍出版社名称
+     */
     private String bookPressName;
 
 

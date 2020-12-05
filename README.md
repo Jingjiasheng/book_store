@@ -38,6 +38,7 @@
 | book_id               | int           |                                | 本平台的唯一标识   |
 | book_isbn             | varchar(20)   |                                | isbn【书籍识别码】 |
 | book_name             | varchar(100)  |                                | 图书名称           |
+|book_cover              |varchar(255)|书籍封面|字符串类型数据，存放图片在服务器的地址|
 | book_category_id      | int           | 维护一张书籍与类别表           | 图书类别           |
 | book_author           | varchar(100)  | 第一作者                       | 作者               |
 | boo_press_id          | int           | 维护一张出版社表               | 出版社             |
@@ -87,6 +88,8 @@
 | book_Buyer_id          | int          |                                            | 买家ID         |
 | book_detailed_address  | varchar(256) | 书籍目前所在城市中的详细位置               | 所在详细位置   |
 | book_city_id           | int          | 书籍存在的城市位置                         | 书所在城市位置 |
+|book_seller_images|varchar(1024)|卖家发布图书的照片|由字符串组成，多个图片之间使用分号隔开|
+|book_buyer_images|varchar(1024)|买发布图书的照片|由字符串组成，多个图片之间使用分号隔开|
 
 ##### 书籍状态
 

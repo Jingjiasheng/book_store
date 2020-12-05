@@ -10,23 +10,41 @@ import java.io.Serializable;
  */
 public class Book implements Serializable {
     private static final long serialVersionUID = 618258460056886890L;
-    
+    /**
+     * 书籍在平台中存放的ID
+     */
     private Integer bookId;
-    
+    /**
+     * 书籍的ISBN
+     */
     private String bookIsbn;
-    
+    /**
+     * 书籍名称
+     */
     private String bookName;
-    
+    /**
+     * 书籍类别ID
+     */
     private Integer bookCategoryId;
-    
+    /**
+     * 书籍第一作者
+     */
     private String bookAuthor;
-    
+    /**
+     * 书籍出版社ID
+     */
     private Integer booPressId;
-    
+    /**
+     * 书籍在平台的上架时间
+     */
     private String bookPublicationTime;
-    
+    /**
+     * 书籍备注
+     */
     private String bookRemarks;
-    
+    /**
+     * 书籍官方零售价
+     */
     private Double bookOriginalPrice;
 
 

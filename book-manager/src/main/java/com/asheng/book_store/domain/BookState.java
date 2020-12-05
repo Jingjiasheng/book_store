@@ -10,9 +10,13 @@ import java.io.Serializable;
  */
 public class BookState implements Serializable {
     private static final long serialVersionUID = 773774195941241659L;
-    
+    /**
+     * 书籍在平台中存放的状态ID
+     */
     private Integer bookStateId;
-    
+    /**
+     * 书籍在平台中存放的状态ID
+     */
     private String bookStateExplain;
 
 
