@@ -33,9 +33,9 @@ spring:
 ##################################################################################################swagger2设置
 swagger:
   #标题
-  title: A_sheng旧书交易系统
+  title: A_sheng旧书交易系统-用户管理系统
   #说明
-  description: 这是用于后台调试API专用界面
+  description: 后台调试API专用界面
   #版本
   version: 1.0.RELEASE
   #许可证

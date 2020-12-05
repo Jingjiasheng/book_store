@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2020-12-02 14:35:25
  */
-@Api(tags = "管理员对图书出版社执行相关操作的相关API",value = "这个是values，并不知道有什么作用！")
+@Api(tags = "图书出版社相关操作API",value = "这个是values，并不知道有什么作用！")
 @RestController
 @RequestMapping("bookPress")
 public class BookPressController {

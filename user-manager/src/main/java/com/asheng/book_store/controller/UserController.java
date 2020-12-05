@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2020-12-02 14:35:33
  */
-@Api(tags = "前台普通用户进行操作的相关API",value = "这个是values，并不知道有什么作用！")
+@Api(tags = "普通用户信息的相关操作API",value = "这个是values，并不知道有什么作用！")
 @RestController
 @RequestMapping("user")
 public class UserController {
