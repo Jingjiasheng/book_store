@@ -32,17 +32,16 @@ public class BookController {
 
     private CityService cityService;
 
-
-    //================================================================================前台用户页面请求：
-
     //###########图书查询相关操作
+
     /**
-     * 获取图书总册数
+     * 获取图书入库的总册数【说明：总册数指的是不同的书籍，不是不同用户发布的两本相同的书籍】
+     * @return 入册数量
      */
     @RequestMapping("/getBookCount")
     @ResponseBody
     public Integer getBooksCount(){
-
+        ResultMsg<Integer> resultMsg = new ResultMsg<>();
         return null;
     }
 
@@ -54,7 +53,6 @@ public class BookController {
     @RequestMapping("/getBooksList")
     @ResponseBody
     public List<Book> getBookList(@RequestParam(value = "offset",defaultValue = "1")Integer offset, @RequestParam(value = "limit",defaultValue = "10")Integer limite){
-
         return null;
     }
 
@@ -63,9 +61,9 @@ public class BookController {
      * 需要获取的字段 bookId
      * 需要显示的字段：所有字段均需要，但是按要求隐藏部分非必须字段
      */
-    @RequestMapping("/getBookByBookId")
+    @RequestMapping("/getBookByBookIsbn")
     @ResponseBody
-    public Book getBookByBookId(Integer bookId){
+    public Book getBookByBookId(Integer bookIsbn){
 
         return null;
     }
@@ -78,7 +76,6 @@ public class BookController {
     @RequestMapping("/getBookListBySearch")
     @ResponseBody
     public List<Book> getBookListBySearch(String searchKey){
-
         return null;
     }
 
@@ -95,52 +92,55 @@ public class BookController {
     }
 
 
-    /**
-     * 用户查看自己发布的书籍信息，根据用户ID获取书籍列表
-     * 传入数据：userID
-     * 显示数据：所有字段，按需显示或隐藏即可
-     */
-    @RequestMapping("/getBooksByUserId")
-    @ResponseBody
-    public List<Book> getBooksByUserId(Integer userId){
-
-        return null;
-    }
 
     //###########图书修改相关操作
     /**
-     *用户根据图书ID修改发布的图书信息
-     * 传入数据：bookId 修改后的book信息
+     *  管理员根据图书Isbn修改发布的图书信息
+     * 传入数据：bookIsbn 修改后的book信息
      * 显示数据：弹窗显示成功与否，然后回到这本图书的图书详情页
      */
-    @RequestMapping("/updateBookByBookId")
+    @RequestMapping("/updateBookByBookIsbn")
     @ResponseBody
-    public ResultMsg updateBookByBookId(Integer bookId){
+    public ResultMsg updateBookByBookIsbn(Book book){
 
         return null;
     }
 
     /**
-     *一键下架图书实现
-     * 传入数据：bookId
+     *一键下架所有的一款图书实现
+     * 传入数据：bookIsbn
      * 显示数据，弹窗显示下架结果，并跳转到下架图书详情页面
+     * 返回一共下架了多少条本已经发布的书籍
      */
-    @RequestMapping("/updateBookStateOffShelfByBookId")
+    @RequestMapping("/updateBookStateOffShelfByBookIsbn")
     @ResponseBody
-    public ResultMsg updateBookStateOffShelf(Integer bookId){
+    public ResultMsg updateBookStateOffShelf(Integer bookIsbn){
 
         return null;
     }
 
-    //###########图书添加相关操作
+
     /**
-     * 用户新发布图书信息
-     * 传入数据userId，book信息
+     * 用户添加图书信息【在用户发布图书的时候进行添加，但是用户发布的图书信息需要经过管理员确定】
+     * book信息
      * 发布成功弹框提示跳转到图书详情页面
      */
-    @RequestMapping("/addBookByUser")
+    @RequestMapping("/addBookBySeller")
     @ResponseBody
-    public ResultMsg addBookByUser(Book book,BookAbout bookAbout){
+    public ResultMsg addBookByUser(Book book ){
+
+        return null;
+    }
+
+
+    /**
+     * 管理员添加图书信息
+     * book信息
+     * 发布成功弹框提示跳转到图书详情页面
+     */
+    @RequestMapping("/addBookByAdmin")
+    @ResponseBody
+    public ResultMsg addBookByAdmin(Book book ){
 
         return null;
     }
@@ -152,16 +152,15 @@ public class BookController {
      * 传入数据bookId
      * 显示删除成功，跳转到用户的图书列表的页面
      */
-    @RequestMapping("/deleteBookByBookId")
+    @RequestMapping("/deleteBookByBookIsbn")
     @ResponseBody
-    public ResultMsg deleteBookByBookId(Integer bookId){
+    public ResultMsg deleteBookByBookIsbn(String bookIsbn){
 
         return null;
     }
 
 
     //================================================================================后台页面请求
-
     //#########图书查询相关操作
     /**
      * 获取图书主要信息列表用于展示，并分页
@@ -187,28 +186,4 @@ public class BookController {
         return null;
     }
 
-    /**
-     * 根据bookId查询一本书的详细信息，基本上包括所有信息，原始属性设置为禁用！不可修改
-     */
-    @RequestMapping("/getBookAllInfoByBookId")
-    @ResponseBody
-    public Book getBookAllInfoByBookId(Integer bookId){
-
-        return null;
-    }
-
-
-
-    //#########图书修改相关操作
-    /**
-     * 修改图书的像详细信息，先获取图书详细信息
-     * 传入参数book
-     * 显示修改成功后的图书详情页面
-     */
-    @RequestMapping("/updateBookInfoByBookId")
-    @ResponseBody
-    public ResultMsg updateBookInfoByBookId(Integer bookId){
-
-        return null;
-    }
 }
