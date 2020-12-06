@@ -3,6 +3,7 @@ package com.asheng.book_store.service.serviceImpl;
 
 import com.asheng.book_store.dao.BookDao;
 import com.asheng.book_store.domain.Book;
+import com.asheng.book_store.domain.BookAbout;
 import com.asheng.book_store.service.BookService;
 import org.springframework.stereotype.Service;
 
@@ -20,61 +21,74 @@ public class BookServiceImpl implements BookService {
     @Resource
     private BookDao bookDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param bookId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public Book queryById(Integer bookId) {
-        return this.bookDao.queryById(bookId);
+    public Integer getBooksCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<Book> queryAllByLimit(int offset, int limit) {
-        return this.bookDao.queryAllByLimit(offset, limit);
+    public List<Book> getBookList(Integer limite) {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param book 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Book insert(Book book) {
-        this.bookDao.insert(book);
-        return book;
+    public Book getBookByBookId(Integer bookId) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param book 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Book update(Book book) {
-        this.bookDao.update(book);
-        return this.queryById(book.getBookId());
+    public List<Book> getBookListBySearch(String searchKey) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param bookId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer bookId) {
-        return this.bookDao.deleteById(bookId) > 0;
+    public List<Book> getBooksByOthers(Integer bookCategoryId, Integer bookMinPrice, Integer bookMaxPrice, Integer cityId) {
+        return null;
+    }
+
+    @Override
+    public List<Book> getBooksByUserId(Integer userId) {
+        return null;
+    }
+
+    @Override
+    public Integer updateBookByBookId(Integer bookId) {
+        return null;
+    }
+
+    @Override
+    public Integer updateBookStateOffShelf(Integer bookId) {
+        return null;
+    }
+
+    @Override
+    public Integer addBookByUser(Book book, BookAbout bookAbout) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteBookByBookId(Integer bookId) {
+        return null;
+    }
+
+    @Override
+    public List<Book> getBookListByLimit(Integer offset, Integer pageSize) {
+        return null;
+    }
+
+    @Override
+    public List<Book> getBookListByAdmin(Integer userId, String bookName, String bookIsbn, String bookAuthor, Integer cityId) {
+        return null;
+    }
+
+    @Override
+    public Book getBookAllInfoByBookId(Integer bookId) {
+        return null;
+    }
+
+    @Override
+    public Integer updateBookInfoByBookId(Integer bookId) {
+        return null;
     }
 }
