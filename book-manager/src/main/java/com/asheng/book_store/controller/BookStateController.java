@@ -2,7 +2,7 @@ package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.BookState;
 import com.asheng.book_store.service.BookStateService;
-import io.swagger.annotations.Api;
+import io.swagger.annotations.*;
 import org.jvnet.staxex.BinaryText;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,20 +28,15 @@ public class BookStateController {
     @Resource
     private BookStateService bookStateService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public BookState selectOne(Integer id) {
-        return this.bookStateService.queryById(id);
-    }
 
     /**
-     * 获取状态总数
+     * 获取图书状态总数
+     * @return 图书状态总数
      */
+    @ApiOperation(value="获取图书状态总数",notes="没有参数!")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookStateCount")
     @ResponseBody
     public Integer getBookStateCount(){
@@ -51,7 +46,12 @@ public class BookStateController {
 
     /**
      * 查询所有的状态信息列表
+     * @return 状态信息列表
      */
+    @ApiOperation(value="查询所有的状态信息列表",notes="不分页")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookStateList")
     @ResponseBody
     public List<BookState> getBookStateList(){
@@ -62,19 +62,41 @@ public class BookStateController {
 
     /**
      * 查询分页的状态信息列表
+     * @param offset 数据起始位置
+     * @param pageSize 数据量大小
+     * @return 状态列表
      */
+    @ApiOperation(value="查询分页的状态信息列表",notes="分页带分页参数")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="offset",value="数据起始位置",required=true,paramType="Integer"),
+            @ApiImplicitParam(name="pageSize",value="数据量大小",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookStateListByLimit")
     @ResponseBody
-    public List<BookState> getBookStateListByLimit(Integer offset, Integer PageSize){
+
+    public List<BookState> getBookStateListByLimit(Integer offset, Integer pageSize){
 
         return null;
     }
 
 
-
     /**
      * 根据stateId查询state信息
+     * @param bookStateId 图书状态ID
+     * @return 图书状态信息
      */
+    @ApiOperation(value="根据stateId查询state信息",notes="需要参数bookStateId!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookStateId",value="图书状态ID",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookStateByBookStateId")
     @ResponseBody
     public BookState getBookStateByBookStateId(Integer bookStateId){
@@ -85,30 +107,60 @@ public class BookStateController {
 
     /**
      * 根据stateId修改state信息
+     * @param bookState 图书状态信息
+     * @return 修改的记录数
      */
+    @ApiOperation(value="根据stateId修改state信息",notes="需要参数bookStateID!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookState",value="图书状态信息",required=true,paramType="BookState")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/updateBookStateByBookStateId")
     @ResponseBody
-    public Integer updateBookStateByBookStateId(){
+    public Integer updateBookStateByBookStateId(BookState bookState){
 
         return null;
     }
 
     /**
      * 删除状态信息【物理删除根据stateId】
+     * @param bookSateId 图书状态ID
+     * @return 删除的数量
      */
+    @ApiOperation(value="删除状态信息",notes="物理删除根据stateId!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookSateId",value="图书状态ID",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/deleteBookStateByBookStateId")
     @ResponseBody
-    public Integer deleteBookStateByBookStateId(){
+    public Integer deleteBookStateByBookStateId(Integer bookSateId){
 
         return null;
     }
 
     /**
      * 添加图书状态信息
+     * @param bookState 图书状态信息
+     * @return
      */
+    @ApiOperation(value="添加图书状态信息",notes="图书状态信息BookState!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookState",value="图书状态信息",required=true,paramType="session")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/addBookState")
     @ResponseBody
-    public Integer addBookState(){
+    public Integer addBookState(BookState bookState){
 
         return null;
     }

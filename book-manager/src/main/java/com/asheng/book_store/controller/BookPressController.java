@@ -2,7 +2,7 @@ package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.BookPress;
 import com.asheng.book_store.service.BookPressService;
-import io.swagger.annotations.Api;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,21 +27,15 @@ public class BookPressController {
     @Resource
     private BookPressService bookPressService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public BookPress selectOne(Integer id) {
-        return this.bookPressService.queryById(id);
-    }
-
 
     /**
      * 获取出版社总数
+     * @return 出版社
      */
+    @ApiOperation(value="获取出版社总数",notes="不需要参数!")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookPressCount")
     @ResponseBody
     public Integer getBookPressCount(){
@@ -51,7 +45,19 @@ public class BookPressController {
 
     /**
      * 查询出版社列表，含分页
+     * @param offset 数据起始位置
+     * @param pageSize 每页的数据量大小
+     * @return
      */
+    @ApiOperation(value="查询出版社列表，含分页",notes="需要分页参数!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="offset",value="数据起始位置",required=true,paramType="Integer"),
+            @ApiImplicitParam(name="pageSize",value="每页的数据量大小",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookListByLimit")
     @ResponseBody
     public List<BookPress> getBookListByLimit(Integer offset, Integer pageSize){
@@ -60,8 +66,12 @@ public class BookPressController {
     }
 
     /**
-     * 查询出版社列表，含分页
+     * 查询出版社列表，不分页
      */
+    @ApiOperation(value="查询出版社列表，不分页",notes="无需参数，页面下拉列表选择专用!")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookList")
     @ResponseBody
     public List<BookPress> getBookList(){
@@ -71,7 +81,17 @@ public class BookPressController {
 
     /**
      * 根据出版社Id查询出版社信息
+     * @param bookPressId 出版社ID
+     * @return 出版社信息
      */
+    @ApiOperation(value="根据出版社Id查询出版社信息",notes="需要参数出版社ID")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookPressId",value="出版社ID",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/getBookPressByBookPressId")
     @ResponseBody
     public BookPress getBookPressByBookPressId(Integer bookPressId){
@@ -80,18 +100,38 @@ public class BookPressController {
     }
 
     /**
-     *根据bookPressId修改出版社信息【包含编码与出版名称，务必保证与网络上一致】
+     * 根据bookPressId修改出版社信息【包含编码与出版名称，务必保证与网络上一致】
+     * @param bookPress 出版社信息
+     * @return 修改的数量
      */
+    @ApiOperation(value="根据bookPressId修改出版社信息",notes="包含编码与出版名称，务必保证与网络上一致!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookPress",value="出版社信息",required=true,paramType="BookPress")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/updateBookPressByBookPressId")
     @ResponseBody
-    public Integer updateBookPressByBookPressId(Integer bookPressId){
+    public Integer updateBookPressByBookPressId(BookPress bookPress){
 
         return null;
     }
 
     /**
      * 添加出版社信息
+     * @param bookPress 出版社信息
+     * @return 添加出版社的数量
      */
+    @ApiOperation(value="添加出版社信息",notes="参数为出版社信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookPress",value="出版社信息",required=true,paramType="BookPress")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/addBookPress")
     @ResponseBody
     public BookPress addBookPress(BookPress bookPress){
@@ -100,8 +140,18 @@ public class BookPressController {
     }
 
     /**
-     * 删除出版社信息，一般很少使用
+     * 删除出版社信息，物理删除
+     * @param bookPressId 出版社ID
+     * @return 删除的数量
      */
+    @ApiOperation(value="删除出版社信息",notes="根据出版社ID删除出版社的信息一定要保证数据准确，执行物理删除!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="bookPressId",value="出版社ID",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     @RequestMapping("/deleteBookPressByBookPressId")
     @ResponseBody
     public Integer deleteBookPressByBookPressId(Integer bookPressId){
