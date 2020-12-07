@@ -68,7 +68,7 @@ public class BookController {
     })
     @RequestMapping("/getBooksList")
     @ResponseBody
-    public List<Book> getBookList(@RequestParam(value = "offset",defaultValue = "1")Integer offset, @RequestParam(value = "limit",defaultValue = "10")Integer limite){
+    public ResultMsg getBookList(@RequestParam(value = "offset",defaultValue = "1")Integer offset, @RequestParam(value = "limit",defaultValue = "10")Integer limite){
         return null;
     }
 
@@ -87,7 +87,7 @@ public class BookController {
     })
     @RequestMapping("/getBookByBookId")
     @ResponseBody
-    public Book getBookByBookId(Integer bookIsbn){
+    public ResultMsg getBookByBookId(Integer bookIsbn){
 
         return null;
     }
@@ -107,7 +107,7 @@ public class BookController {
     })
     @RequestMapping("/getBookListBySearch")
     @ResponseBody
-    public List<Book> getBookListBySearch(String searchKey){
+    public ResultMsg getBookListBySearch(String searchKey){
         return null;
     }
 
@@ -133,7 +133,7 @@ public class BookController {
     })
     @RequestMapping("/getBooksByOthers")
     @ResponseBody
-    public List<Book> getBooksByOthers(Integer bookCategoryId,Integer bookMinPrice,Integer bookMaxPrice,Integer cityId){
+    public ResultMsg getBooksByOthers(Integer bookCategoryId,Integer bookMinPrice,Integer bookMaxPrice,Integer cityId){
 
         return null;
     }
@@ -268,7 +268,7 @@ public class BookController {
     })
     @RequestMapping("/getBookListByLimit")
     @ResponseBody
-    public List<Book> getBookListByLimit(Integer offset,Integer pageSize){
+    public ResultMsg getBookListByLimit(Integer offset,Integer pageSize){
 
         return null;
     }
@@ -293,7 +293,7 @@ public class BookController {
     })
     @RequestMapping("/getBookListByAdmin")
     @ResponseBody
-    public List<Book> getBookListByAdmin(String bookName,String bookIsbn,String bookAuthor){
+    public ResultMsg getBookListByAdmin(String bookName,String bookIsbn,String bookAuthor){
 
         return null;
     }

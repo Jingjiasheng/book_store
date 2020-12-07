@@ -29,17 +29,6 @@ public class CityController {
     @Resource
     private CityService cityService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public City selectOne(Integer id) {
-        return this.cityService.queryById(id);
-    }
-
 
     //##############查询
     /**
@@ -51,7 +40,7 @@ public class CityController {
     })
     @RequestMapping("/getCityCount")
     @ResponseBody
-    public Integer getCityCount(){
+    public ResultMsg getCityCount(){
 
         return null;
     }
@@ -66,7 +55,7 @@ public class CityController {
     })
     @RequestMapping("/getCityList")
     @ResponseBody
-    public List<City> getCityList(){
+    public ResultMsg getCityList(){
 
         return null;
     }
@@ -85,7 +74,7 @@ public class CityController {
     })
     @RequestMapping("/getCityListByLimit")
     @ResponseBody
-    public List<City> getCityListByLimit(Integer offset,Integer pageSize){
+    public ResultMsg getCityListByLimit(Integer offset,Integer pageSize){
 
         return null;
     }
@@ -103,7 +92,7 @@ public class CityController {
     })
     @RequestMapping("/getCityByCityId")
     @ResponseBody
-    public City getCityByCityId(Integer cityId){
+    public ResultMsg getCityByCityId(Integer cityId){
 
         return null;
     }

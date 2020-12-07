@@ -20,61 +20,39 @@ public class BookPressServiceImpl implements BookPressService {
     @Resource
     private BookPressDao bookPressDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param bookPressId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public BookPress queryById(Integer bookPressId) {
-        return this.bookPressDao.queryById(bookPressId);
+    public Integer getBookPressCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<BookPress> queryAllByLimit(int offset, int limit) {
-        return this.bookPressDao.queryAllByLimit(offset, limit);
+    public List<BookPress> getBookListByLimit(Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param bookPress 实例对象
-     * @return 实例对象
-     */
     @Override
-    public BookPress insert(BookPress bookPress) {
-        this.bookPressDao.insert(bookPress);
-        return bookPress;
+    public List<BookPress> getBookList() {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param bookPress 实例对象
-     * @return 实例对象
-     */
     @Override
-    public BookPress update(BookPress bookPress) {
-        this.bookPressDao.update(bookPress);
-        return this.queryById(bookPress.getBookPressId());
+    public BookPress getBookPressByBookPressId(Integer bookPressId) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param bookPressId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer bookPressId) {
-        return this.bookPressDao.deleteById(bookPressId) > 0;
+    public BookPress updateBookPressByBookPressId(BookPress bookPress) {
+        return null;
+    }
+
+    @Override
+    public BookPress addBookPress(BookPress bookPress) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteBookPressByBookPressId(Integer bookPressId) {
+        return null;
     }
 }

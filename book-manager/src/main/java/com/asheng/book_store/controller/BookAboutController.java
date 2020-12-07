@@ -41,7 +41,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutCount")
     @ResponseBody
-    public Integer getBookAboutCount(){
+    public ResultMsg getBookAboutCount(){
         return null;
     }
 
@@ -60,7 +60,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutCountBybuyerId")
     @ResponseBody
-    public Integer getBookAboutCountBybuyerId(Integer buyerId){
+    public ResultMsg getBookAboutCountBybuyerId(Integer buyerId){
 
         return null;
     }
@@ -81,7 +81,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutCountBySellerId")
     @ResponseBody
-    public Integer getBookAboutCountBySellerId(Integer sellerId){
+    public ResultMsg getBookAboutCountBySellerId(Integer sellerId){
 
         return null;
     }
@@ -102,7 +102,7 @@ public class BookAboutController {
     })
     @RequestMapping("getBookAboutByBookId")
     @ResponseBody
-    public BookAbout getBookAboutByBookId(Integer bookId){
+    public ResultMsg getBookAboutByBookId(Integer bookId){
 
         return null;
     }
@@ -123,7 +123,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAllInfoByBookId")
     @ResponseBody
-    public Book getBookAllInfoByBookId(Integer bookId){
+    public ResultMsg getBookAllInfoByBookId(Integer bookId){
 
         return null;
     }
@@ -144,7 +144,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBooksBySellerId")
     @ResponseBody
-    public List<Book> getBooksBySellerId(Integer sellerId){
+    public ResultMsg getBooksBySellerId(Integer sellerId){
 
         return null;
     }
@@ -164,7 +164,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBooksByBuyerId")
     @ResponseBody
-    public List<Book> getBooksByBuyerId(Integer buyerId){
+    public ResultMsg getBooksByBuyerId(Integer buyerId){
 
         return null;
     }
@@ -185,7 +185,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutListByBookIsbn")
     @ResponseBody
-    public List<BookAbout> getBookAboutListByBookIsbn(String bookIsbn){
+    public ResultMsg getBookAboutListByBookIsbn(String bookIsbn){
 
         return null;
     }
@@ -200,7 +200,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutList")
     @ResponseBody
-    public List<BookAbout> getBookAboutList(){
+    public ResultMsg getBookAboutList(){
 
         return null;
     }
@@ -222,7 +222,7 @@ public class BookAboutController {
     })
     @RequestMapping("/getBookAboutListByLimit")
     @ResponseBody
-    public List<BookAbout> getBookAboutListByLimit(Integer offset,Integer pageSize){
+    public ResultMsg getBookAboutListByLimit(Integer offset,Integer pageSize){
 
         return null;
     }
@@ -242,7 +242,7 @@ public class BookAboutController {
     })
     @RequestMapping("/updateBookAboutByBookAboutId")
     @ResponseBody
-    public Integer updateBookAboutByBookAboutId(BookAbout bookAbout){
+    public ResultMsg updateBookAboutByBookAboutId(BookAbout bookAbout){
 
         return null;
     }
@@ -262,7 +262,7 @@ public class BookAboutController {
     })
     @RequestMapping("/updateBookAboutStateOffShelf")
     @ResponseBody
-    public Integer updateBookAboutStateOffShelf(Integer bookId){
+    public ResultMsg updateBookAboutStateOffShelf(Integer bookId){
 
         return null;
     }
@@ -283,7 +283,7 @@ public class BookAboutController {
     })
     @RequestMapping("/addBookAboutBySeller")
     @ResponseBody
-    public ResultMsg addBookByUser(BookAbout bookAbout){
+    public ResultMsg addBookAboutByUser(BookAbout bookAbout){
 
         return null;
     }

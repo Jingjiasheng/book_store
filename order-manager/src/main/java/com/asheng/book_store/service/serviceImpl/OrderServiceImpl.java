@@ -19,61 +19,44 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderDao orderDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param orderId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public Order queryById(String orderId) {
-        return this.orderDao.queryById(orderId);
+    public Integer getOrderCountByOrder(Order order) {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<Order> queryAllByLimit(int offset, int limit) {
-        return this.orderDao.queryAllByLimit(offset, limit);
+    public List<Order> getOrderListByOrder(Order order, Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param order 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Order insert(Order order) {
-        this.orderDao.insert(order);
-        return order;
+    public Order getOrderByOrderId(Integer orderId) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param order 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Order update(Order order) {
-        this.orderDao.update(order);
-        return this.queryById(order.getOrderId());
+    public List<Order> getOrderListByOrderGenerationTime(String orderGenerationMinTime, String orderGenerationMaxTime) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param orderId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(String orderId) {
-        return this.orderDao.deleteById(orderId) > 0;
+    public Order addOrder(Order order) {
+        return null;
+    }
+
+    @Override
+    public Order updateOrderByOrderId(Order order) {
+        return null;
+    }
+
+    @Override
+    public Order updateOrderOrderStateByOrderId(Integer orderId, Integer orderStateId) {
+        return null;
+    }
+
+    @Override
+    public Order orderForcedEnd(Integer orderId, String orderRemarks) {
+        return null;
     }
 }

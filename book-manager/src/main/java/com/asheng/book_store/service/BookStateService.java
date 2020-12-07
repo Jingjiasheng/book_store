@@ -2,6 +2,9 @@ package com.asheng.book_store.service;
 
 
 import com.asheng.book_store.domain.BookState;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -14,44 +17,54 @@ import java.util.List;
 public interface BookStateService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param bookStateId 主键
-     * @return 实例对象
+     * 获取图书状态总数
+     * @return 图书状态总数
      */
-    BookState queryById(Integer bookStateId);
+    public Integer getBookStateCount();
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 查询所有的状态信息列表
+     * @return 状态信息列表
      */
-    List<BookState> queryAllByLimit(int offset, int limit);
+    public List<BookState> getBookStateList();
+
 
     /**
-     * 新增数据
-     *
-     * @param bookState 实例对象
-     * @return 实例对象
+     * 查询分页的状态信息列表
+     * @param offset 数据起始位置
+     * @param pageSize 数据量大小
+     * @return 状态列表
      */
-    BookState insert(BookState bookState);
+    public List<BookState> getBookStateListByLimit(Integer offset, Integer pageSize);
+
 
     /**
-     * 修改数据
-     *
-     * @param bookState 实例对象
-     * @return 实例对象
+     * 根据stateId查询state信息
+     * @param bookStateId 图书状态ID
+     * @return 图书状态信息
      */
-    BookState update(BookState bookState);
+    public BookState getBookStateByBookStateId(Integer bookStateId);
+
 
     /**
-     * 通过主键删除数据
-     *
-     * @param bookStateId 主键
-     * @return 是否成功
+     * 根据stateId修改state信息
+     * @param bookState 图书状态信息
+     * @return 修改的记录数
      */
-    boolean deleteById(Integer bookStateId);
+    public BookState updateBookStateByBookStateId(BookState bookState);
+
+    /**
+     * 删除状态信息【物理删除根据stateId】
+     * @param bookSateId 图书状态ID
+     * @return 删除的数量
+     */
+    public Integer deleteBookStateByBookStateId(Integer bookSateId);
+
+    /**
+     * 添加图书状态信息
+     * @param bookState 图书状态信息
+     * @return
+     */
+    public BookState addBookState(BookState bookState);
 
 }

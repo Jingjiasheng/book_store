@@ -20,61 +20,39 @@ public class BookStateServiceImpl implements BookStateService {
     @Resource
     private BookStateDao bookStateDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param bookStateId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public BookState queryById(Integer bookStateId) {
-        return this.bookStateDao.queryById(bookStateId);
+    public Integer getBookStateCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<BookState> queryAllByLimit(int offset, int limit) {
-        return this.bookStateDao.queryAllByLimit(offset, limit);
+    public List<BookState> getBookStateList() {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param bookState 实例对象
-     * @return 实例对象
-     */
     @Override
-    public BookState insert(BookState bookState) {
-        this.bookStateDao.insert(bookState);
-        return bookState;
+    public List<BookState> getBookStateListByLimit(Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param bookState 实例对象
-     * @return 实例对象
-     */
     @Override
-    public BookState update(BookState bookState) {
-        this.bookStateDao.update(bookState);
-        return this.queryById(bookState.getBookStateId());
+    public BookState getBookStateByBookStateId(Integer bookStateId) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param bookStateId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer bookStateId) {
-        return this.bookStateDao.deleteById(bookStateId) > 0;
+    public BookState updateBookStateByBookStateId(BookState bookState) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteBookStateByBookStateId(Integer bookSateId) {
+        return null;
+    }
+
+    @Override
+    public BookState addBookState(BookState bookState) {
+        return null;
     }
 }

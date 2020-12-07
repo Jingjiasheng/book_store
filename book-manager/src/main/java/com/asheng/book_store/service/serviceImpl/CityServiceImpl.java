@@ -19,61 +19,39 @@ public class CityServiceImpl implements CityService {
     @Resource
     private CityDao cityDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param cityId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public City queryById(Integer cityId) {
-        return this.cityDao.queryById(cityId);
+    public Integer getCityCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<City> queryAllByLimit(int offset, int limit) {
-        return this.cityDao.queryAllByLimit(offset, limit);
+    public List<City> getCityList() {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param city 实例对象
-     * @return 实例对象
-     */
     @Override
-    public City insert(City city) {
-        this.cityDao.insert(city);
-        return city;
+    public List<City> getCityListByLimit(Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param city 实例对象
-     * @return 实例对象
-     */
     @Override
-    public City update(City city) {
-        this.cityDao.update(city);
-        return this.queryById(city.getCityId());
+    public City getCityByCityId(Integer cityId) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param cityId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer cityId) {
-        return this.cityDao.deleteById(cityId) > 0;
+    public City addCity(City city) {
+        return null;
+    }
+
+    @Override
+    public City updateCityByCityId(City city) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteCityById(Integer cityId) {
+        return null;
     }
 }

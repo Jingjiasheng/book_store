@@ -1,6 +1,9 @@
 package com.asheng.book_store.service;
 
 import com.asheng.book_store.domain.BookPress;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -13,44 +16,49 @@ import java.util.List;
 public interface BookPressService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param bookPressId 主键
-     * @return 实例对象
+     * 获取出版社总数
+     * @return 出版社
      */
-    BookPress queryById(Integer bookPressId);
+    public Integer getBookPressCount();
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 查询出版社列表，含分页
+     * @param offset 数据起始位置
+     * @param pageSize 每页的数据量大小
+     * @return
      */
-    List<BookPress> queryAllByLimit(int offset, int limit);
+    public List<BookPress> getBookListByLimit(Integer offset, Integer pageSize);
 
     /**
-     * 新增数据
-     *
-     * @param bookPress 实例对象
-     * @return 实例对象
+     * 查询出版社列表，不分页
      */
-    BookPress insert(BookPress bookPress);
+    public List<BookPress> getBookList();
 
     /**
-     * 修改数据
-     *
-     * @param bookPress 实例对象
-     * @return 实例对象
+     * 根据出版社Id查询出版社信息
+     * @param bookPressId 出版社ID
+     * @return 出版社信息
      */
-    BookPress update(BookPress bookPress);
+    public BookPress getBookPressByBookPressId(Integer bookPressId);
 
     /**
-     * 通过主键删除数据
-     *
-     * @param bookPressId 主键
-     * @return 是否成功
+     * 根据bookPressId修改出版社信息【包含编码与出版名称，务必保证与网络上一致】
+     * @param bookPress 出版社信息
+     * @return 修改的数量
      */
-    boolean deleteById(Integer bookPressId);
+    public BookPress updateBookPressByBookPressId(BookPress bookPress);
 
+    /**
+     * 添加出版社信息
+     * @param bookPress 出版社信息
+     * @return 添加出版社的数量
+     */
+    public BookPress addBookPress(BookPress bookPress);
+
+    /**
+     * 删除出版社信息，物理删除
+     * @param bookPressId 出版社ID
+     * @return 删除的数量
+     */
+    public Integer deleteBookPressByBookPressId(Integer bookPressId);
 }

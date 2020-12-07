@@ -2,6 +2,9 @@ package com.asheng.book_store.service;
 
 
 import com.asheng.book_store.domain.OrderState;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -14,44 +17,49 @@ import java.util.List;
 public interface OrderStateService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param orderStateId 主键
-     * @return 实例对象
+     * 查询订单状态总数
+     * @return 订单总数
      */
-    OrderState queryById(Integer orderStateId);
+    public Integer getOrderStateCount();
+
+
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 根据Id查询一个订单状态信息
+     * @param orderStateId 订单状态ID
+     * @return 订单状态信息
      */
-    List<OrderState> queryAllByLimit(int offset, int limit);
+    public OrderState getOrderStateByOrderStateId(Integer orderStateId);
+
+
+    //不分页查询所有订单状态信息
 
     /**
-     * 新增数据
-     *
-     * @param orderState 实例对象
-     * @return 实例对象
+     * 不分页查询所有订单状态信息
+     * @return 返回不分页的状态信息列表
      */
-    OrderState insert(OrderState orderState);
+    public List<OrderState> getOrderStateList();
+
 
     /**
-     * 修改数据
-     *
-     * @param orderState 实例对象
-     * @return 实例对象
+     * 根据订单Id修改订单状态信息
+     * @param orderState 修改后的订单信息
+     * @return 更新的订单数量
      */
-    OrderState update(OrderState orderState);
+    public OrderState updateOrderStateByOrderStateId(OrderState orderState);
 
     /**
-     * 通过主键删除数据
-     *
-     * @param orderStateId 主键
-     * @return 是否成功
+     * 添加订单状态信息
+     * @param orderState 订单状态信息
+     * @return 添加的记录数
      */
-    boolean deleteById(Integer orderStateId);
+    public OrderState addOrderState(OrderState orderState);
 
+
+    /**
+     * 删除订单状态信息
+     * @param orderStateId 要删除的订单状态Id
+     * @return 删掉的记录数
+     */
+    public Integer deleteOrderStateByOrderStateId(Integer orderStateId);
 }

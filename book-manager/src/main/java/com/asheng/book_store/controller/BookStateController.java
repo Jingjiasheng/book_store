@@ -2,6 +2,7 @@ package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.BookState;
 import com.asheng.book_store.service.BookStateService;
+import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
 import org.jvnet.staxex.BinaryText;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,7 @@ public class BookStateController {
     })
     @RequestMapping("/getBookStateCount")
     @ResponseBody
-    public Integer getBookStateCount(){
+    public ResultMsg getBookStateCount(){
 
         return null;
     }
@@ -54,7 +55,7 @@ public class BookStateController {
     })
     @RequestMapping("/getBookStateList")
     @ResponseBody
-    public List<BookState> getBookStateList(){
+    public ResultMsg getBookStateList(){
 
         return null;
     }
@@ -78,7 +79,7 @@ public class BookStateController {
     @RequestMapping("/getBookStateListByLimit")
     @ResponseBody
 
-    public List<BookState> getBookStateListByLimit(Integer offset, Integer pageSize){
+    public ResultMsg getBookStateListByLimit(Integer offset, Integer pageSize){
 
         return null;
     }
@@ -99,7 +100,7 @@ public class BookStateController {
     })
     @RequestMapping("/getBookStateByBookStateId")
     @ResponseBody
-    public BookState getBookStateByBookStateId(Integer bookStateId){
+    public ResultMsg getBookStateByBookStateId(Integer bookStateId){
 
         return null;
     }
@@ -120,7 +121,7 @@ public class BookStateController {
     })
     @RequestMapping("/updateBookStateByBookStateId")
     @ResponseBody
-    public Integer updateBookStateByBookStateId(BookState bookState){
+    public ResultMsg updateBookStateByBookStateId(BookState bookState){
 
         return null;
     }
@@ -140,7 +141,7 @@ public class BookStateController {
     })
     @RequestMapping("/deleteBookStateByBookStateId")
     @ResponseBody
-    public Integer deleteBookStateByBookStateId(Integer bookSateId){
+    public ResultMsg deleteBookStateByBookStateId(Integer bookSateId){
 
         return null;
     }
@@ -148,7 +149,7 @@ public class BookStateController {
     /**
      * 添加图书状态信息
      * @param bookState 图书状态信息
-     * @return
+     * @return 添加的图书信息
      */
     @ApiOperation(value="添加图书状态信息",notes="图书状态信息BookState!")
     @ApiImplicitParams({
@@ -160,7 +161,7 @@ public class BookStateController {
     })
     @RequestMapping("/addBookState")
     @ResponseBody
-    public Integer addBookState(BookState bookState){
+    public ResultMsg addBookState(BookState bookState){
 
         return null;
     }

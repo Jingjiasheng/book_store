@@ -2,6 +2,7 @@ package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.BookCategory;
 import com.asheng.book_store.service.BookCategoryService;
+import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/getBookCategoryCount")
     @ResponseBody
-    public Integer getBookCategoryCount(){
+    public ResultMsg getBookCategoryCount(){
 
         return null;
     }
@@ -53,7 +54,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/getBookCategoryList")
     @ResponseBody
-    public List<BookCategory> getBookCategoryList(){
+    public ResultMsg getBookCategoryList(){
 
         return null;
     }
@@ -75,7 +76,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/getBookCategoryBylimit")
     @ResponseBody
-    public List<BookCategory> getBookCategoryBylimit(Integer offset,Integer pageSize){
+    public ResultMsg getBookCategoryBylimit(Integer offset,Integer pageSize){
 
         return null;
     }
@@ -95,7 +96,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/getBookCategoryByBookCategoryId")
     @ResponseBody
-    public BookCategory getBookCategoryByBookCategoryId(Integer bookCategoryId){
+    public ResultMsg getBookCategoryByBookCategoryId(Integer bookCategoryId){
 
         return null;
     }
@@ -115,7 +116,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/getBookCountByBookId")
     @ResponseBody
-    public Object getBookCountByBookCateporyId(Integer bookCategoryId){
+    public ResultMsg getBookCountByBookCateporyId(Integer bookCategoryId){
 
         return null;
     }
@@ -135,7 +136,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/addBookCategory")
     @ResponseBody
-    public Integer addBookCategory(BookCategory bookCategory){
+    public ResultMsg addBookCategory(BookCategory bookCategory){
 
         return null;
     }
@@ -155,7 +156,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/updateBookCategoryByBookCategoryId")
     @ResponseBody
-    public Integer updateBookCategoryByBookCategoryId(BookCategory bookCategory){
+    public ResultMsg updateBookCategoryByBookCategoryId(BookCategory bookCategory){
 
         return null;
     }
@@ -175,7 +176,7 @@ public class BookCategoryController {
     })
     @RequestMapping("/deleteBookCategoryByBookCategoryId")
     @ResponseBody
-    public Integer deleteBookCategoryByBookCategoryId(Integer bookCategoryId){
+    public ResultMsg deleteBookCategoryByBookCategoryId(Integer bookCategoryId){
 
         return null;
     }

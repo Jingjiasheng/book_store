@@ -28,12 +28,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBookList(Integer limite) {
+    public List<Book> getBookList(Integer offset, Integer limite) {
         return null;
     }
 
     @Override
-    public Book getBookByBookId(Integer bookId) {
+    public Book getBookByBookId(Integer bookIsbn) {
         return null;
     }
 
@@ -48,27 +48,27 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBooksByUserId(Integer userId) {
+    public Book updateBookByBookIsbn(Book book) {
         return null;
     }
 
     @Override
-    public Integer updateBookByBookId(Integer bookId) {
+    public Book updateBookStateOffShelf(Integer bookIsbn) {
         return null;
     }
 
     @Override
-    public Integer updateBookStateOffShelf(Integer bookId) {
+    public Book addBookByUser(Book book) {
         return null;
     }
 
     @Override
-    public Integer addBookByUser(Book book, BookAbout bookAbout) {
+    public Book addBookByAdmin(Book book) {
         return null;
     }
 
     @Override
-    public Integer deleteBookByBookId(Integer bookId) {
+    public Book deleteBookByBookIsbn(String bookIsbn) {
         return null;
     }
 
@@ -78,17 +78,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBookListByAdmin(Integer userId, String bookName, String bookIsbn, String bookAuthor, Integer cityId) {
-        return null;
-    }
-
-    @Override
-    public Book getBookAllInfoByBookId(Integer bookId) {
-        return null;
-    }
-
-    @Override
-    public Integer updateBookInfoByBookId(Integer bookId) {
+    public List<Book> getBookListByAdmin(String bookName, String bookIsbn, String bookAuthor) {
         return null;
     }
 }

@@ -2,6 +2,7 @@ package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.BookPress;
 import com.asheng.book_store.service.BookPressService;
+import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class BookPressController {
     })
     @RequestMapping("/getBookPressCount")
     @ResponseBody
-    public Integer getBookPressCount(){
+    public ResultMsg getBookPressCount(){
 
         return null;
     }
@@ -60,7 +61,7 @@ public class BookPressController {
     })
     @RequestMapping("/getBookListByLimit")
     @ResponseBody
-    public List<BookPress> getBookListByLimit(Integer offset, Integer pageSize){
+    public ResultMsg getBookListByLimit(Integer offset, Integer pageSize){
 
         return null;
     }
@@ -74,7 +75,7 @@ public class BookPressController {
     })
     @RequestMapping("/getBookList")
     @ResponseBody
-    public List<BookPress> getBookList(){
+    public ResultMsg getBookList(){
 
         return null;
     }
@@ -94,7 +95,7 @@ public class BookPressController {
     })
     @RequestMapping("/getBookPressByBookPressId")
     @ResponseBody
-    public BookPress getBookPressByBookPressId(Integer bookPressId){
+    public ResultMsg getBookPressByBookPressId(Integer bookPressId){
 
         return null;
     }
@@ -114,7 +115,7 @@ public class BookPressController {
     })
     @RequestMapping("/updateBookPressByBookPressId")
     @ResponseBody
-    public Integer updateBookPressByBookPressId(BookPress bookPress){
+    public ResultMsg updateBookPressByBookPressId(BookPress bookPress){
 
         return null;
     }
@@ -134,7 +135,7 @@ public class BookPressController {
     })
     @RequestMapping("/addBookPress")
     @ResponseBody
-    public BookPress addBookPress(BookPress bookPress){
+    public ResultMsg addBookPress(BookPress bookPress){
 
         return null;
     }
@@ -154,7 +155,7 @@ public class BookPressController {
     })
     @RequestMapping("/deleteBookPressByBookPressId")
     @ResponseBody
-    public Integer deleteBookPressByBookPressId(Integer bookPressId){
+    public ResultMsg deleteBookPressByBookPressId(Integer bookPressId){
 
         return null;
     }

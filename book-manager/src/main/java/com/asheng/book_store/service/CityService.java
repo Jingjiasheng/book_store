@@ -2,6 +2,11 @@ package com.asheng.book_store.service;
 
 
 import com.asheng.book_store.domain.City;
+import com.asheng.book_store.utils.ResultMsg;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -13,45 +18,40 @@ import java.util.List;
  */
 public interface CityService {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param cityId 主键
-     * @return 实例对象
-     */
-    City queryById(Integer cityId);
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 获取城市总数
      */
-    List<City> queryAllByLimit(int offset, int limit);
+    public Integer getCityCount();
 
     /**
-     * 新增数据
-     *
-     * @param city 实例对象
-     * @return 实例对象
+     * 获取全部的城市列表信息用于加载下拉框，无需分页
      */
-    City insert(City city);
+    public List<City> getCityList();
 
     /**
-     * 修改数据
-     *
-     * @param city 实例对象
-     * @return 实例对象
+     * 获取全部的城市列表信息用于加载下拉框，无需分页
      */
-    City update(City city);
+    public List<City> getCityListByLimit(Integer offset,Integer pageSize);
 
     /**
-     * 通过主键删除数据
-     *
-     * @param cityId 主键
-     * @return 是否成功
+     * 根据cityId获取city信息
      */
-    boolean deleteById(Integer cityId);
+    public City getCityByCityId(Integer cityId);
+
+    /**
+     * 实现添加cityId和city【注意：按照国家规定城市码与城市对应关系进行添加】
+     */
+    public City addCity(City city);
+
+    /**
+     * 修改城市信息【包含cityNumber与cityName的修改】
+     */
+    public City updateCityByCityId(City city);
+
+    /**
+     * 删除城市信息【物理上删除！注意数据的准确性无务必删除！】
+     */
+    public Integer deleteCityById(Integer cityId);
 
 }
