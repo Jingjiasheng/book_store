@@ -1,7 +1,10 @@
 package com.asheng.book_store.service;
 
 import com.asheng.book_store.domain.AdminOperation;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -13,44 +16,54 @@ import java.util.List;
 public interface AdminOperationService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param  主键
-     * @return 实例对象
+     * 查询所有管理员的操作记录总数
+     * @return 管理员的总操作记录数
      */
-    AdminOperation queryById(int adminId );
+    public Integer getAdminOperationCount() ;
+
+
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 查询所有管理员的操作记录，并按照时间倒叙排列【展示最新的操作记录】
+     * @param offset 数据起始位置
+     * @param pageSize 每页的数据量大小
+     * @return 管理员操作信息列表
      */
-    List<AdminOperation> queryAllByLimit(int offset, int limit);
+    public List<AdminOperation> getAdminOperationListByLimit(Integer offset, Integer pageSize);
+
 
     /**
-     * 新增数据
-     *
-     * @param adminOperation 实例对象
-     * @return 实例对象
+     * 按照管理员姓名，管理员ID，请求名称，操作等级进行查询操作记录
+     * @param adminOperation 包含查询信息的操作信息
+     * @return 操作记录列表
      */
-    AdminOperation insert(AdminOperation adminOperation);
+    public List<AdminOperation> getAdminOperationListByOther(AdminOperation adminOperation) ;
+
 
     /**
-     * 修改数据
-     *
-     * @param adminOperation 实例对象
-     * @return 实例对象
+     * 添加管理员操作记录【由切面类完成，不显示调用controller方法】
+     * @param adminOperation 管理员的操作信息
+     * @return 管理员的操作信息
      */
-    AdminOperation update(AdminOperation adminOperation);
+    public AdminOperation addAdminOperation(AdminOperation adminOperation);
+
+    //
 
     /**
-     * 通过主键删除数据
-     *
-     * @param  主键
-     * @return 是否成功
+     * 删除管理员操作记录【主要用于释放内存】
+     * @param request  操作记录ID数组
+     * @return 删除的记录数
      */
-    boolean deleteById(int adminId );
+    public Integer deleteAdminOperation(HttpServletRequest request);
+
+
+    /**
+     * 根据操作记录的ID查询一条操作记录的详细信息
+     * @param adminOperationId 操作记录的ID
+     * @return 操作记录详细信息
+     */
+    public AdminOperation getAdminOperationByAdminOperationId(Integer adminOperationId) ;
+
+
 
 }

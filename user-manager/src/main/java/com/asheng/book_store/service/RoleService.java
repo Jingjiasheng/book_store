@@ -1,6 +1,8 @@
 package com.asheng.book_store.service;
 
 import com.asheng.book_store.domain.Role;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -13,44 +15,58 @@ import java.util.List;
 public interface RoleService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param roleId 主键
-     * @return 实例对象
+     * 查询所有角色数量
+     * @return 角色总数量
      */
-    Role queryById(Integer roleId);
+    public Integer getRoleCount( ) ;
+
+
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 获取角色列表【不分页,其他地方调用备用】
+     * @return 角色列表
      */
-    List<Role> queryAllByLimit(int offset, int limit);
+    public List<Role> getRoleList( );
 
     /**
-     * 新增数据
-     *
-     * @param role 实例对象
-     * @return 实例对象
+     *获取角色列表分页
+     * @param offset 数据起始位置
+     * @param pageSize 每页的数据量大小
+     * @return 角色数据列表
      */
-    Role insert(Role role);
+    public List<Role> getRoleListByLimit(Integer offset,Integer pageSize ) ;
+
+
 
     /**
-     * 修改数据
-     *
-     * @param role 实例对象
-     * @return 实例对象
+     * 根据ID获取一个角色详细信息
+     * @param roleId 角色ID
+     * @return 角色信息
      */
-    Role update(Role role);
+    public Role getRoleByRoleId(Integer roleId) ;
+
 
     /**
-     * 通过主键删除数据
-     *
-     * @param roleId 主键
-     * @return 是否成功
+     * 添加一个角色
+     * @param role 角色信息
+     * @return 添加的角色信息
      */
-    boolean deleteById(Integer roleId);
+    public Role addRole(Role role) ;
+
+
+    /**
+     * 根据ID修改一个角色的信息
+     * @param role 修改后的role
+     * @return 修改后的role
+     */
+    public Role updateRoleByRoleId(Role role);
+
+
+    /**
+     * 删除一个角色的信息
+     * @param roleId 角色ID
+     * @return 删除的角色数量
+     */
+    public Integer deleteRoleByRoleId(Integer roleId) ;
 
 }

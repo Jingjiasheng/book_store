@@ -2,7 +2,7 @@
 MySQL Backup
 Source Server Version: 5.7.32
 Source Database: book_store
-Date: 2020/12/8 11:45:13
+Date: 2020/12/8 16:57:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -18,6 +18,7 @@ CREATE TABLE `admin` (
   `admin_login_name` varchar(20) DEFAULT NULL COMMENT '管理员登录用户名',
   `admin_login_password` varchar(20) DEFAULT NULL COMMENT '管理员登录密码',
   `admin_photo` varchar(255) DEFAULT NULL COMMENT '管理员头像地址，正式上线后放在服务器，一般情况下使用网络图片地址',
+  `admin_email` varchar(50) DEFAULT NULL COMMENT '管理员邮箱',
   PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
@@ -28,7 +29,7 @@ DROP TABLE IF EXISTS `admin_operation`;
 CREATE TABLE `admin_operation` (
   `admin_id` int(10) DEFAULT NULL COMMENT '管理员ID',
   `admin_operation_time` varchar(20) DEFAULT NULL COMMENT '管理员执行操作的时间戳',
-  `admin_operation_url` varchar(255) DEFAULT NULL COMMENT '管理员操作的controller请求路径',
+  `admin_operation_url_permission_id` varchar(255) DEFAULT NULL COMMENT '管理员操作的controller请求路径根据权限的请求路径获得，量表关联查询',
   `admin_operation_result_code` varchar(20) DEFAULT NULL COMMENT '管理员操作该请求之后的返回值',
   `admin_operation_grade_id` int(10) DEFAULT NULL COMMENT '管理员操作的这个请求是属于增删改查中的哪一种，需要有风险操作等级划分',
   `admin_operation_ip` varchar(20) DEFAULT NULL COMMENT '管理员操作的IP记录'
@@ -215,13 +216,15 @@ CREATE TABLE `user` (
   `user_registration_time` varchar(20) DEFAULT NULL COMMENT '用户注册时间戳',
   `user_credit` int(4) DEFAULT NULL COMMENT '用户信用积分',
   `user_photo` varchar(1024) DEFAULT NULL COMMENT '用户头像',
+  `user_acount_state` int(11) DEFAULT NULL COMMENT '0:被禁用   1:正常启用',
+  `user_account_state` int(11) DEFAULT NULL COMMENT '和管理员账号状态一致，0：禁用，1：正常',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户表【包含卖家与买家，还有白嫖怪】';
 
 -- ----------------------------
 --  Records 
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1','jjs','001','jjs','123456',NULL), ('2','jzs','002','jzs','123456',NULL), ('3','mqx','003','mqx','123456',NULL);
+INSERT INTO `admin` VALUES ('1','jjs','001','jjs','123456',NULL,NULL), ('2','jzs','002','jzs','123456',NULL,NULL), ('3','mqx','003','mqx','123456',NULL,NULL);
 INSERT INTO `admin_operation` VALUES ('1',NULL,NULL,'',NULL,NULL), ('1',NULL,NULL,NULL,NULL,NULL), ('1',NULL,NULL,NULL,NULL,NULL), ('2',NULL,NULL,NULL,NULL,NULL);
 INSERT INTO `book` VALUES ('001002003','java入门到放弃','1','jjs','1','2020-01-01','nice','100.05',NULL), ('001001002','儿歌三百首','2','jzs','1','2020-01-02','child','25.00',NULL), ('001002001','一脸懵B','3','mqx','1','2020-01-03','joke','35.02',NULL);
 INSERT INTO `book_about` VALUES ('1','九成九','京东商城购买获得','2','1','1','1','武汉科技大学城市学院','1',NULL,'99.05',NULL,NULL,'001002003');
@@ -264,4 +267,4 @@ INSERT INTO `city` VALUES ('622922','康乐县',NULL), ('622923','永靖县',NUL
 INSERT INTO `city` VALUES ('650104','新市区',NULL), ('650105','水磨沟区',NULL), ('650106','头屯河区',NULL), ('650107','达坂城区',NULL), ('650109','米东区',NULL), ('650121','乌鲁木齐县',NULL), ('650200','克拉玛依市',NULL), ('650202','独山子区',NULL), ('650203','克拉玛依区',NULL), ('650204','白碱滩区',NULL), ('650205','乌尔禾区',NULL), ('650400','吐鲁番市',NULL), ('650402','高昌区',NULL), ('650421','鄯善县',NULL), ('650422','托克逊县',NULL), ('650500','哈密市',NULL), ('650502','伊州区',NULL), ('650521','巴里坤哈萨克自治县',NULL), ('650522','伊吾县',NULL), ('652300','昌吉回族自治州',NULL), ('652301','昌吉市',NULL), ('652302','阜康市',NULL), ('652323','呼图壁县',NULL), ('652324','玛纳斯县',NULL), ('652325','奇台县',NULL), ('652327','吉木萨尔县',NULL), ('652328','木垒哈萨克自治县',NULL), ('652700','博尔塔拉蒙古自治州',NULL), ('652701','博乐市',NULL), ('652702','阿拉山口市',NULL), ('652722','精河县',NULL), ('652723','温泉县',NULL), ('652800','巴音郭楞蒙古自治州',NULL), ('652801','库尔勒市',NULL), ('652822','轮台县',NULL), ('652823','尉犁县',NULL), ('652824','若羌县',NULL), ('652825','且末县',NULL), ('652826','焉耆回族自治县',NULL), ('652827','和静县',NULL), ('652828','和硕县',NULL), ('652829','博湖县',NULL), ('652900','阿克苏地区',NULL), ('652901','阿克苏市',NULL), ('652922','温宿县',NULL), ('652923','库车县',NULL), ('652924','沙雅县',NULL), ('652925','新和县',NULL), ('652926','拜城县',NULL), ('652927','乌什县',NULL), ('652928','阿瓦提县',NULL), ('652929','柯坪县',NULL), ('653000','克孜勒苏柯尔克孜自治州',NULL), ('653001','阿图什市',NULL), ('653022','阿克陶县',NULL), ('653023','阿合奇县',NULL), ('653024','乌恰县',NULL), ('653100','喀什地区',NULL), ('653101','喀什市',NULL), ('653121','疏附县',NULL), ('653122','疏勒县',NULL), ('653123','英吉沙县',NULL), ('653124','泽普县',NULL), ('653125','莎车县',NULL), ('653126','叶城县',NULL), ('653127','麦盖提县',NULL), ('653128','岳普湖县',NULL), ('653129','伽师县',NULL), ('653130','巴楚县',NULL), ('653131','塔什库尔干塔吉克自治县',NULL), ('653200','和田地区',NULL), ('653201','和田市',NULL), ('653221','和田县',NULL), ('653222','墨玉县',NULL), ('653223','皮山县',NULL), ('653224','洛浦县',NULL), ('653225','策勒县',NULL), ('653226','于田县',NULL), ('653227','民丰县',NULL), ('654000','伊犁哈萨克自治州',NULL), ('654002','伊宁市',NULL), ('654003','奎屯市',NULL), ('654004','霍尔果斯市',NULL), ('654021','伊宁县',NULL), ('654022','察布查尔锡伯自治县',NULL), ('654023','霍城县',NULL), ('654024','巩留县',NULL), ('654025','新源县',NULL), ('654026','昭苏县',NULL), ('654027','特克斯县',NULL), ('654028','尼勒克县',NULL), ('654200','塔城地区',NULL), ('654201','塔城市',NULL), ('654202','乌苏市',NULL), ('654221','额敏县',NULL), ('654223','沙湾县',NULL), ('654224','托里县',NULL), ('654225','裕民县',NULL), ('654226','和布克赛尔蒙古自治县',NULL), ('654300','阿勒泰地区',NULL);
 INSERT INTO `city` VALUES ('654301','阿勒泰市',NULL), ('654321','布尔津县',NULL), ('654322','富蕴县',NULL), ('654323','福海县',NULL), ('654324','哈巴河县',NULL), ('654325','青河县',NULL), ('654326','吉木乃县',NULL), ('659001','石河子市',NULL), ('659002','阿拉尔市',NULL), ('659003','图木舒克市',NULL), ('659004','五家渠市',NULL), ('659005','北屯市',NULL), ('659006','铁门关市',NULL), ('659007','双河市',NULL), ('659008','可克达拉市',NULL), ('659009','昆玉市',NULL), ('710000','台湾省',NULL), ('810000','香港特别行政区',NULL), ('820000','澳门特别行政区',NULL);
 INSERT INTO `order_state` VALUES ('101','卖家发布之后，没有买家下单之前','发布中'), ('102','买家选种商品点击下单，正在添加收货信息等，没有付款','被下单'), ('103','买家点击支付，调用支付接口的过程中','支付中'), ('104','支付出现异常之后','支付失败'), ('105','支付成功后，进入等待发货阶段','支付成功'), ('106','卖家发货以后的状态没有确认收货之前','已发货'), ('107','货物中途出现异常，丢失破坏等情况','货物异常'), ('108','买家确认收货','已收货'), ('109','买家确认收货之后自动正常结束','订单正常结束'), ('110','中途出现一些不可抗因素导致无法正常结束订单','订单异常结束');
-INSERT INTO `user` VALUES ('1','test01','test01','11111111111','123456',NULL,'test01','001',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES ('1','test01','test01','11111111111','123456',NULL,'test01','001',NULL,NULL,NULL,NULL,NULL,NULL,NULL);

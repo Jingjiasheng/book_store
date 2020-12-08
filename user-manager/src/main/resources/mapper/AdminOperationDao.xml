@@ -15,7 +15,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
-          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+          admin_id, admin_operation_time, admin_operation_url_permission_id, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
         from book_store.admin_operation
         where admin_id  = #{adminId}
     </select>
@@ -23,7 +23,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BaseResultMap">
         select
-          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+          admin_id, admin_operation_time, admin_operation_url_permission_id, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
         from book_store.admin_operation
         limit #{offset}, #{limit}
     </select>
@@ -31,7 +31,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BaseResultMap">
         select
-          admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
+          admin_id, admin_operation_time, admin_operation_url_permission_id, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip
         from book_store.admin_operation
         <where>
             <if test="adminId != null">
@@ -57,7 +57,7 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="" useGeneratedKeys="true">
-        insert into book_store.admin_operation(admin_id, admin_operation_time, admin_operation_url, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip)
+        insert into book_store.admin_operation(admin_id, admin_operation_time, admin_operation_url_permission_id, admin_operation_result_code, admin_operation_grade_id, admin_operation_ip)
         values (#{adminId}, #{adminOperationTime}, #{adminOperationUrl}, #{adminOperationResultCode}, #{adminOperationGradeId}, #{adminOperationIp})
     </insert>
 

@@ -19,61 +19,39 @@ public class RoleServiceImpl implements RoleService {
     @Resource
     private RoleDao roleDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param roleId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public Role queryById(Integer roleId) {
-        return this.roleDao.queryById(roleId);
+    public Integer getRoleCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<Role> queryAllByLimit(int offset, int limit) {
-        return this.roleDao.queryAllByLimit(offset, limit);
+    public List<Role> getRoleList() {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param role 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Role insert(Role role) {
-        this.roleDao.insert(role);
-        return role;
+    public List<Role> getRoleListByLimit(Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param role 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Role update(Role role) {
-        this.roleDao.update(role);
-        return this.queryById(role.getRoleId());
+    public Role getRoleByRoleId(Integer roleId) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param roleId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer roleId) {
-        return this.roleDao.deleteById(roleId) > 0;
+    public Role addRole(Role role) {
+        return null;
+    }
+
+    @Override
+    public Role updateRoleByRoleId(Role role) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteRoleByRoleId(Integer roleId) {
+        return null;
     }
 }

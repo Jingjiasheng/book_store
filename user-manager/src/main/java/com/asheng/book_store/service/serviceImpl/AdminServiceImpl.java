@@ -19,61 +19,34 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminDao adminDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param adminId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public Admin queryById(Integer adminId) {
-        return this.adminDao.queryById(adminId);
+    public Integer getAdminCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<Admin> queryAllByLimit(int offset, int limit) {
-        return this.adminDao.queryAllByLimit(offset, limit);
+    public List<Admin> getAdminListByLimit(Integer offset, Integer pageSize) {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param admin 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Admin insert(Admin admin) {
-        this.adminDao.insert(admin);
-        return admin;
+    public Admin getAdminByAdminId(Integer adminId) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param admin 实例对象
-     * @return 实例对象
-     */
     @Override
-    public Admin update(Admin admin) {
-        this.adminDao.update(admin);
-        return this.queryById(admin.getAdminId());
+    public Admin addAdmin(Admin admin) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param adminId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer adminId) {
-        return this.adminDao.deleteById(adminId) > 0;
+    public Admin updateAdminByAdminId(Admin admin) {
+        return null;
+    }
+
+    @Override
+    public Admin updateAdminAccountStateByAdminId(Integer adminId) {
+        return null;
     }
 }

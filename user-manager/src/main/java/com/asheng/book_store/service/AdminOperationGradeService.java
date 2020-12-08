@@ -2,6 +2,8 @@ package com.asheng.book_store.service;
 
 
 import com.asheng.book_store.domain.AdminOperationGrade;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -14,44 +16,56 @@ import java.util.List;
 public interface AdminOperationGradeService {
 
     /**
-     * 通过ID查询单条数据
+     * 查询所有管理员的操作等级数量
      *
-     * @param adminOperationGradeId 主键
-     * @return 实例对象
+     * @return 所有管理员的操作等级数量
      */
-    AdminOperationGrade queryById(Integer adminOperationGradeId);
+    public Integer getAdminOperationGradeCount();
+
+
+    //
 
     /**
-     * 查询多条数据
+     * 获取操作等级列表不用分页【以备其他地方引用】
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * @return 操作等级列表
      */
-    List<AdminOperationGrade> queryAllByLimit(int offset, int limit);
+    public List<AdminOperationGrade> getAdminOperationList();
+
 
     /**
-     * 新增数据
+     * 根据等级ID获取操作等级的详细信息
      *
-     * @param adminOperationGrade 实例对象
-     * @return 实例对象
+     * @param adminOperationGradeId 操作等级ID
+     * @return 操作等级详细信息
      */
-    AdminOperationGrade insert(AdminOperationGrade adminOperationGrade);
+    public AdminOperationGrade getAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId);
+
 
     /**
-     * 修改数据
+     * 添加操作等级定义
      *
-     * @param adminOperationGrade 实例对象
-     * @return 实例对象
+     * @param adminOperationGrade 操作等级信息
+     * @return 新增的操作等级信息
      */
-    AdminOperationGrade update(AdminOperationGrade adminOperationGrade);
+    public AdminOperationGrade addAdminOperationGrade(AdminOperationGrade adminOperationGrade);
+
 
     /**
-     * 通过主键删除数据
+     * 修改操作等级的定义
      *
-     * @param adminOperationGradeId 主键
-     * @return 是否成功
+     * @param adminOperationGrade 修改后的等级定义信息
+     * @return 修改后的等级定义信息
      */
-    boolean deleteById(Integer adminOperationGradeId);
+    public AdminOperationGrade updateAdminOperationGradeByAdminOperationGradeId(AdminOperationGrade adminOperationGrade);
+
+
+    /**
+     * 删除操作等级的定义
+     *
+     * @param adminOperationGradeId 操作等级ID
+     * @return 删除的数量
+     */
+    public Integer deleteAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId);
 
 }

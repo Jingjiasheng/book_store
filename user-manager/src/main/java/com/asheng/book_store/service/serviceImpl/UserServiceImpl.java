@@ -19,61 +19,44 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param userId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public User queryById(Integer userId) {
-        return this.userDao.queryById(userId);
+    public Integer getUserCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<User> queryAllByLimit(int offset, int limit) {
-        return this.userDao.queryAllByLimit(offset, limit);
+    public Integer getUserByUserRegistrationTime(String startTime, String endTime) {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param user 实例对象
-     * @return 实例对象
-     */
     @Override
-    public User insert(User user) {
-        this.userDao.insert(user);
-        return user;
+    public List<User> getUserListByLimit(Integer offset, Integer pageSizes) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param user 实例对象
-     * @return 实例对象
-     */
     @Override
-    public User update(User user) {
-        this.userDao.update(user);
-        return this.queryById(user.getUserId());
+    public List<User> getUserListByOther(User user) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param userId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer userId) {
-        return this.userDao.deleteById(userId) > 0;
+    public User getUserByUserId(Integer userId) {
+        return null;
+    }
+
+    @Override
+    public User addUser(User user) {
+        return null;
+    }
+
+    @Override
+    public User updateUserByUserId(User user) {
+        return null;
+    }
+
+    @Override
+    public User updateUserAccountStateByUserId(Integer userId) {
+        return null;
     }
 }

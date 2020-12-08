@@ -1,16 +1,19 @@
 package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.AdminOperationGrade;
+import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.AdminOperationGradeService;
-import io.swagger.annotations.Api;
+import com.asheng.book_store.utils.ResultMsg;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
- * (AdminOperationGrade)表控制层
+ * 管理员操作等级管理控制层
  *
  * @author makejava
  * @since 2020-12-02 14:35:17
@@ -25,15 +28,109 @@ public class AdminOperationGradeController {
     @Resource
     private AdminOperationGradeService adminOperationGradeService;
 
+
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * 查询所有管理员的操作等级数量
+     * @return 所有管理员的操作等级数量
      */
-    @GetMapping("selectOne")
-    public AdminOperationGrade selectOne(Integer id) {
-        return this.adminOperationGradeService.queryById(id);
+    @ApiOperation(value="查询所有管理员的操作等级数量",notes="无需参数!")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("getAdminOperationGradeCount")
+    public ResultMsg getAdminOperationGradeCount( ) {
+        return null;
     }
 
+
+    //
+
+    /**
+     * 获取操作等级列表不用分页【以备其他地方引用】
+     * @return 操作等级列表
+     */
+    @ApiOperation(value="获取操作等级列表不用分页",notes="无需分页!")
+    @ApiResponses({
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("getAdminOperationList")
+    public ResultMsg getAdminOperationList( ) {
+        return null;
+    }
+
+
+    /**
+     * 根据等级ID获取操作等级的详细信息
+     * @param adminOperationGradeId 操作等级ID
+     * @return 操作等级详细信息
+     */
+    @ApiOperation(value="根据等级ID获取操作等级的详细信息",notes="需要参数ID")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="adminOperationGradeId",value="操作等级ID",required=true,paramType="Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("getAdminOperationGradeByAdminOperationGradeId")
+    public ResultMsg getAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId) {
+        return null;
+    }
+
+
+    /**
+     * 添加操作等级定义
+     * @param adminOperationGrade 操作等级信息
+     * @return 新增的操作等级信息
+     */
+    @ApiOperation(value="用户查询自己的个人信息",notes="有参数：操作等级信息!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="adminOperationGrade",value="操作等级信息",required=true,paramType="AdminOperationGrade")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("addAdminOperationGrade")
+    public ResultMsg addAdminOperationGrade(AdminOperationGrade adminOperationGrade) {
+        return null;
+    }
+
+
+    /**
+     * 修改操作等级的定义
+     * @param adminOperationGrade 修改后的等级定义信息
+     * @return 修改后的等级定义信息
+     */
+    @ApiOperation(value="修改操作等级的定义",notes="必须包含等级ID!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="adminOperationGrade",value="修改后的等级定义信息",required=true,paramType="AdminOperationGrade")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("updateAdminOperationGradeByAdminOperationGradeId")
+    public ResultMsg updateAdminOperationGradeByAdminOperationGradeId(AdminOperationGrade adminOperationGrade) {
+        return null;
+    }
+
+
+    /**
+     * 删除操作等级的定义
+     * @param adminOperationGradeId 操作等级ID
+     * @return 删除的数量
+     */
+    @ApiOperation(value="删除操作等级的定义",notes="根据用户自己的ID进行查询！参数名为userId!")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="userId",value="用户的ID",required=true,paramType="session")
+    })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @GetMapping("deleteAdminOperationGradeByAdminOperationGradeId")
+    public ResultMsg deleteAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId) {
+        return null;
+    }
 }

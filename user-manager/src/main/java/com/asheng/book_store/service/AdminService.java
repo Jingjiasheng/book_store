@@ -1,6 +1,9 @@
 package com.asheng.book_store.service;
 
 import com.asheng.book_store.domain.Admin;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -13,44 +16,51 @@ import java.util.List;
 public interface AdminService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param adminId 主键
-     * @return 实例对象
+     * 查询管理员总数
+     * @return 管理员总数
      */
-    Admin queryById(Integer adminId);
+    public Integer getAdminCount();
+
 
     /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
+     * 获取管理员列表分页
+     * @param offset 数据起始位置
+     * @param pageSize 每页的数据量大小
+     * @return 管理员列表
      */
-    List<Admin> queryAllByLimit(int offset, int limit);
+    public List<Admin> getAdminListByLimit(Integer offset,Integer pageSize);
 
     /**
-     * 新增数据
-     *
-     * @param admin 实例对象
-     * @return 实例对象
+     * 根据管理员ID获取一个管理员的信息
+     * @param adminId 管理员ID
+     * @return 管理员详细信息
      */
-    Admin insert(Admin admin);
+    public Admin getAdminByAdminId(Integer adminId) ;
+
+
+    //
 
     /**
-     * 修改数据
-     *
-     * @param admin 实例对象
-     * @return 实例对象
+     * 添加管理员信息
+     * @param admin 管理员信息
+     * @return 新添加的管理员信息
      */
-    Admin update(Admin admin);
+    public Admin addAdmin(Admin admin) ;
+
 
     /**
-     * 通过主键删除数据
-     *
-     * @param adminId 主键
-     * @return 是否成功
+     * 根据管理员ID修改管理员信息
+     * @param admin 管理员ID
+     * @return 修改后的管理员信息
      */
-    boolean deleteById(Integer adminId);
+    public Admin updateAdminByAdminId(Admin admin) ;
+    //
+
+    /**
+     * 禁用账号/启用账号
+     * @param adminId 管理员ID
+     * @return 修改后的管理员的信息
+     */
+    public Admin updateAdminAccountStateByAdminId(Integer adminId) ;
 
 }

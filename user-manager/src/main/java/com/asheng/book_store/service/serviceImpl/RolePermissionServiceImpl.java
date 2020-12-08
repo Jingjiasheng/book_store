@@ -1,11 +1,14 @@
 package com.asheng.book_store.service.serviceImpl;
 
 import com.asheng.book_store.dao.RolePermissionDao;
+import com.asheng.book_store.domain.Permission;
+import com.asheng.book_store.domain.Role;
 import com.asheng.book_store.domain.RolePermission;
 import com.asheng.book_store.service.RolePermissionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,61 +22,44 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     @Resource
     private RolePermissionDao rolePermissionDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param rolePermissionId 主键
-     * @return 实例对象
-     */
+
     @Override
-    public RolePermission queryById(Integer rolePermissionId) {
-        return this.rolePermissionDao.queryById(rolePermissionId);
+    public Integer getRolePermissionCount() {
+        return null;
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
     @Override
-    public List<RolePermission> queryAllByLimit(int offset, int limit) {
-        return this.rolePermissionDao.queryAllByLimit(offset, limit);
+    public List<RolePermission> getRolePermissionList() {
+        return null;
     }
 
-    /**
-     * 新增数据
-     *
-     * @param rolePermission 实例对象
-     * @return 实例对象
-     */
     @Override
-    public RolePermission insert(RolePermission rolePermission) {
-        this.rolePermissionDao.insert(rolePermission);
-        return rolePermission;
+    public List<Permission> getPermissionsByRoleId(Integer roleId) {
+        return null;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param rolePermission 实例对象
-     * @return 实例对象
-     */
     @Override
-    public RolePermission update(RolePermission rolePermission) {
-        this.rolePermissionDao.update(rolePermission);
-        return this.queryById(rolePermission.getRolePermissionId());
+    public List<Role> getRolesByPermissionId(Integer permissionId) {
+        return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param rolePermissionId 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer rolePermissionId) {
-        return this.rolePermissionDao.deleteById(rolePermissionId) > 0;
+    public Integer addPermissionToRole(HttpServletRequest request) {
+        return null;
+    }
+
+    @Override
+    public Integer addRolesToPermission(HttpServletRequest request) {
+        return null;
+    }
+
+    @Override
+    public Integer removePermissionsFromRole(HttpServletRequest request) {
+        return null;
+    }
+
+    @Override
+    public Integer removeRolesFromPermission(HttpServletRequest request) {
+        return null;
     }
 }
