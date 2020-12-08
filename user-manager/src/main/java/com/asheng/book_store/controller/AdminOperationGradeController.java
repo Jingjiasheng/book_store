@@ -5,9 +5,8 @@ import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.AdminOperationGradeService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,6 +37,7 @@ public class AdminOperationGradeController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminOperationGradeCount")
+    @ResponseBody
     public ResultMsg getAdminOperationGradeCount( ) {
         return null;
     }
@@ -54,6 +54,7 @@ public class AdminOperationGradeController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminOperationList")
+    @ResponseBody
     public ResultMsg getAdminOperationList( ) {
         return null;
     }
@@ -73,6 +74,7 @@ public class AdminOperationGradeController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminOperationGradeByAdminOperationGradeId")
+    @ResponseBody
     public ResultMsg getAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId) {
         return null;
     }
@@ -91,7 +93,8 @@ public class AdminOperationGradeController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addAdminOperationGrade")
+    @PostMapping("addAdminOperationGrade")
+    @ResponseBody
     public ResultMsg addAdminOperationGrade(AdminOperationGrade adminOperationGrade) {
         return null;
     }
@@ -110,7 +113,8 @@ public class AdminOperationGradeController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateAdminOperationGradeByAdminOperationGradeId")
+    @PutMapping("updateAdminOperationGradeByAdminOperationGradeId")
+    @ResponseBody
     public ResultMsg updateAdminOperationGradeByAdminOperationGradeId(AdminOperationGrade adminOperationGrade) {
         return null;
     }
@@ -121,7 +125,7 @@ public class AdminOperationGradeController {
      * @param adminOperationGradeId 操作等级ID
      * @return 删除的数量
      */
-    @ApiOperation(value="删除操作等级的定义",notes="根据用户自己的ID进行查询！参数名为userId!")
+    @ApiOperation(value="删除操作等级的定义",notes="物理删除，保证数据准确性!")
     @ApiImplicitParams({
             @ApiImplicitParam(name="userId",value="用户的ID",required=true,paramType="session")
     })
@@ -129,7 +133,8 @@ public class AdminOperationGradeController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("deleteAdminOperationGradeByAdminOperationGradeId")
+    @DeleteMapping("deleteAdminOperationGradeByAdminOperationGradeId")
+    @ResponseBody
     public ResultMsg deleteAdminOperationGradeByAdminOperationGradeId(Integer adminOperationGradeId) {
         return null;
     }

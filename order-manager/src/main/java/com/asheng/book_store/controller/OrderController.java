@@ -4,10 +4,7 @@ import com.asheng.book_store.domain.Order;
 import com.asheng.book_store.service.OrderService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -42,7 +39,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderCountByOrder")
+    @GetMapping("/getOrderCountByOrder")
     @ResponseBody
     public ResultMsg getOrderCountByOrder(Order order){
 
@@ -68,7 +65,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderListByOrder")
+    @GetMapping("/getOrderListByOrder")
     @ResponseBody
     public ResultMsg getOrderListByOrder(Order order,Integer offset,Integer pageSize){
 
@@ -89,7 +86,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderByOrderId")
+    @GetMapping("/getOrderByOrderId")
     @ResponseBody
     public ResultMsg getOrderByOrderId(Integer orderId){
 
@@ -112,7 +109,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderListByOrderGenerationTime")
+    @GetMapping("/getOrderListByOrderGenerationTime")
     @ResponseBody
     public ResultMsg getOrderListByOrderGenerationTime(String orderGenerationMinTime ,String orderGenerationMaxTime){
 
@@ -133,7 +130,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addOrder")
+    @PostMapping("/addOrder")
     @ResponseBody
     public ResultMsg addOrder(Order order){
 
@@ -154,7 +151,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateOrderByOrderId")
+    @PutMapping("/updateOrderByOrderId")
     @ResponseBody
     public ResultMsg updateOrderByOrderId(Order order){
 
@@ -177,7 +174,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateOrderOrderStateByOrderId")
+    @PutMapping("/updateOrderOrderStateByOrderId")
     @ResponseBody
     public ResultMsg updateOrderOrderStateByOrderId(Integer orderId,Integer orderStateId){
 
@@ -200,7 +197,7 @@ public class OrderController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/orderForcedEnd")
+    @PutMapping("/orderForcedEnd")
     @ResponseBody
     public ResultMsg orderForcedEnd(Integer orderId ,String orderRemarks){
 

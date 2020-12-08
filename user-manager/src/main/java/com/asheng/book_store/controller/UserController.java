@@ -4,11 +4,10 @@ import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.UserService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Digits;
 
 /**
  * 用户管理控制层
@@ -37,6 +36,7 @@ public class UserController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getUserCount")
+    @ResponseBody
     public ResultMsg getUserCount( ) {
         return null;
     }
@@ -57,6 +57,7 @@ public class UserController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getUserByUserRegistrationTime")
+    @ResponseBody
     public ResultMsg getUserByUserRegistrationTime(String startTime, String endTime) {
         return null;
     }
@@ -78,6 +79,7 @@ public class UserController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getUserListByLimit")
+    @ResponseBody
     public ResultMsg getUserListByLimit(Integer offset,Integer pageSizes) {
         return null;
     }
@@ -97,6 +99,7 @@ public class UserController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getUserListByOther")
+    @ResponseBody
     public ResultMsg getUserListByOther(User user) {
         return null;
     }
@@ -116,6 +119,7 @@ public class UserController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getUserByUserId")
+    @ResponseBody
     public ResultMsg getUserByUserId(Integer userId) {
         return null;
     }
@@ -134,7 +138,8 @@ public class UserController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addUser")
+    @PostMapping("addUser")
+    @ResponseBody
     public ResultMsg addUser(User user) {
         return null;
     }
@@ -153,7 +158,8 @@ public class UserController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateUserByUserId")
+    @PutMapping("updateUserByUserId")
+    @ResponseBody
     public ResultMsg updateUserByUserId(User user) {
         return null;
     }
@@ -172,7 +178,8 @@ public class UserController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateUserAccountStateByUserId")
+    @PutMapping("updateUserAccountStateByUserId")
+    @ResponseBody
     public ResultMsg updateUserAccountStateByUserId(Integer userId) {
         return null;
     }

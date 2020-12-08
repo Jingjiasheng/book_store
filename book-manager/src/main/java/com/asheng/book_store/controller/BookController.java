@@ -42,7 +42,7 @@ public class BookController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCount")
+    @GetMapping("/getBookCount")
     @ResponseBody
     public ResultMsg getBooksCount(){
         ResultMsg<Integer> resultMsg = new ResultMsg<>();
@@ -66,7 +66,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBooksList")
+    @GetMapping("/getBooksList")
     @ResponseBody
     public ResultMsg getBookList(@RequestParam(value = "offset",defaultValue = "1")Integer offset, @RequestParam(value = "limit",defaultValue = "10")Integer limite){
         return null;
@@ -85,7 +85,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookByBookId")
+    @GetMapping("/getBookByBookId")
     @ResponseBody
     public ResultMsg getBookByBookId(Integer bookIsbn){
 
@@ -105,7 +105,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookListBySearch")
+    @GetMapping("/getBookListBySearch")
     @ResponseBody
     public ResultMsg getBookListBySearch(String searchKey){
         return null;
@@ -131,7 +131,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBooksByOthers")
+    @GetMapping("/getBooksByOthers")
     @ResponseBody
     public ResultMsg getBooksByOthers(Integer bookCategoryId,Integer bookMinPrice,Integer bookMaxPrice,Integer cityId){
 
@@ -155,7 +155,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookByBookIsbn")
+    @PutMapping("/updateBookByBookIsbn")
     @ResponseBody
     public ResultMsg updateBookByBookIsbn(Book book){
 
@@ -175,7 +175,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookStateOffShelfByBookIsbn")
+    @PutMapping("/updateBookStateOffShelfByBookIsbn")
     @ResponseBody
     public ResultMsg updateBookStateOffShelf(Integer bookIsbn){
 
@@ -196,7 +196,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addBookBySeller")
+    @PostMapping("/addBookBySeller")
     @ResponseBody
     public ResultMsg addBookByUser(Book book ){
 
@@ -217,7 +217,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addBookByAdmin")
+    @PostMapping("/addBookByAdmin")
     @ResponseBody
     public ResultMsg addBookByAdmin(Book book ){
 
@@ -240,7 +240,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/deleteBookByBookIsbn")
+    @PutMapping("/deleteBookByBookIsbn")
     @ResponseBody
     public ResultMsg deleteBookByBookIsbn(String bookIsbn){
 
@@ -266,7 +266,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookListByLimit")
+    @GetMapping("/getBookListByLimit")
     @ResponseBody
     public ResultMsg getBookListByLimit(Integer offset,Integer pageSize){
 
@@ -291,7 +291,7 @@ public class BookController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookListByAdmin")
+    @GetMapping("/getBookListByAdmin")
     @ResponseBody
     public ResultMsg getBookListByAdmin(String bookName,String bookIsbn,String bookAuthor){
 

@@ -1,17 +1,12 @@
 package com.asheng.book_store.controller;
 
 import com.asheng.book_store.domain.Admin;
-import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.AdminService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 管理员管理控制层
@@ -61,6 +56,7 @@ public class AdminController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminListByLimit")
+    @ResponseBody
     public ResultMsg getAdminListByLimit(Integer offset,Integer pageSize) {
         return null;
     }
@@ -80,6 +76,7 @@ public class AdminController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminByAdminId")
+    @ResponseBody
     public ResultMsg getAdminByAdminId(Integer adminId) {
         return null;
     }
@@ -100,7 +97,8 @@ public class AdminController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addAdmin")
+    @PostMapping("addAdmin")
+    @ResponseBody
     public ResultMsg addAdmin(Admin admin) {
         return null;
     }
@@ -119,7 +117,8 @@ public class AdminController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateAdminByAdminId")
+    @PutMapping("updateAdminByAdminId")
+    @ResponseBody
     public ResultMsg updateAdminByAdminId(Admin admin) {
         return null;
     }
@@ -139,7 +138,8 @@ public class AdminController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateAdminAccountStateByAdminId")
+    @PutMapping("updateAdminAccountStateByAdminId")
+    @ResponseBody
     public ResultMsg updateAdminAccountStateByAdminId(Integer adminId) {
         return null;
     }

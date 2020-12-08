@@ -5,9 +5,8 @@ import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.RoleService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,6 +37,7 @@ public class RoleController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRoleCount")
+    @ResponseBody
     public ResultMsg getRoleCount( ) {
         return null;
     }
@@ -57,6 +57,7 @@ public class RoleController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRoleList")
+    @ResponseBody
     public ResultMsg getRoleList( ) {
         return null;
     }
@@ -76,6 +77,7 @@ public class RoleController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRoleListByLimit")
+    @ResponseBody
     public ResultMsg getRoleListByLimit(Integer offset,Integer pageSize ) {
         return null;
     }
@@ -96,6 +98,7 @@ public class RoleController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRoleByRoleId")
+    @ResponseBody
     public ResultMsg getRoleByRoleId(Integer roleId) {
         return null;
     }
@@ -114,7 +117,8 @@ public class RoleController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addRole")
+    @PostMapping("addRole")
+    @ResponseBody
     public ResultMsg addRole(Role role) {
         return null;
     }
@@ -133,7 +137,8 @@ public class RoleController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updateRoleByRoleId")
+    @PutMapping("updateRoleByRoleId")
+    @ResponseBody
     public ResultMsg updateRoleByRoleId(Role role) {
         return null;
     }
@@ -144,7 +149,7 @@ public class RoleController {
      * @param roleId 角色ID
      * @return 删除的角色数量
      */
-    @ApiOperation(value="删除一个角色的信息",notes="参数角色ID!")
+    @ApiOperation(value="删除一个角色的信息",notes="参数角色ID,物理删除!")
     @ApiImplicitParams({
             @ApiImplicitParam(name="roleId",value="角色ID",required=true,paramType="Integer")
     })
@@ -152,7 +157,8 @@ public class RoleController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("deleteRoleByRoleId")
+    @DeleteMapping("deleteRoleByRoleId")
+    @ResponseBody
     public ResultMsg deleteRoleByRoleId(Integer roleId) {
         return null;
     }

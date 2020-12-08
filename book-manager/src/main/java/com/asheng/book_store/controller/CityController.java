@@ -5,10 +5,7 @@ import com.asheng.book_store.domain.City;
 import com.asheng.book_store.service.CityService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,7 +35,7 @@ public class CityController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getCityCount")
+    @GetMapping("/getCityCount")
     @ResponseBody
     public ResultMsg getCityCount(){
 
@@ -53,7 +50,7 @@ public class CityController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getCityList")
+    @GetMapping("/getCityList")
     @ResponseBody
     public ResultMsg getCityList(){
 
@@ -72,7 +69,7 @@ public class CityController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getCityListByLimit")
+    @GetMapping("/getCityListByLimit")
     @ResponseBody
     public ResultMsg getCityListByLimit(Integer offset,Integer pageSize){
 
@@ -90,7 +87,7 @@ public class CityController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getCityByCityId")
+    @GetMapping("/getCityByCityId")
     @ResponseBody
     public ResultMsg getCityByCityId(Integer cityId){
 
@@ -108,7 +105,7 @@ public class CityController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addCity")
+    @PostMapping("/addCity")
     @ResponseBody
     public ResultMsg addCity(City city){
 
@@ -126,7 +123,7 @@ public class CityController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateCityByCityId")
+    @PutMapping("/updateCityByCityId")
     @ResponseBody
     public ResultMsg updateCityByCityId(City city){
 
@@ -144,7 +141,7 @@ public class CityController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/deleteCityById")
+    @DeleteMapping("/deleteCityById")
     @ResponseBody
     public ResultMsg deleteCityById(Integer cityId){
 

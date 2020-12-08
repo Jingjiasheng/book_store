@@ -4,10 +4,7 @@ import com.asheng.book_store.domain.BookPress;
 import com.asheng.book_store.service.BookPressService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +34,7 @@ public class BookPressController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookPressCount")
+    @GetMapping("/getBookPressCount")
     @ResponseBody
     public ResultMsg getBookPressCount(){
 
@@ -59,7 +56,7 @@ public class BookPressController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookListByLimit")
+    @GetMapping("/getBookListByLimit")
     @ResponseBody
     public ResultMsg getBookListByLimit(Integer offset, Integer pageSize){
 
@@ -73,7 +70,7 @@ public class BookPressController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookList")
+    @GetMapping("/getBookList")
     @ResponseBody
     public ResultMsg getBookList(){
 
@@ -93,7 +90,7 @@ public class BookPressController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookPressByBookPressId")
+    @GetMapping("/getBookPressByBookPressId")
     @ResponseBody
     public ResultMsg getBookPressByBookPressId(Integer bookPressId){
 
@@ -113,7 +110,7 @@ public class BookPressController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookPressByBookPressId")
+    @PutMapping("/updateBookPressByBookPressId")
     @ResponseBody
     public ResultMsg updateBookPressByBookPressId(BookPress bookPress){
 
@@ -133,7 +130,7 @@ public class BookPressController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addBookPress")
+    @PostMapping("/addBookPress")
     @ResponseBody
     public ResultMsg addBookPress(BookPress bookPress){
 
@@ -153,7 +150,7 @@ public class BookPressController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/deleteBookPressByBookPressId")
+    @DeleteMapping("/deleteBookPressByBookPressId")
     @ResponseBody
     public ResultMsg deleteBookPressByBookPressId(Integer bookPressId){
 

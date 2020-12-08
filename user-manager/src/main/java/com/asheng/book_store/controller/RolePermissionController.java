@@ -6,9 +6,8 @@ import com.asheng.book_store.domain.RolePermission;
 import com.asheng.book_store.service.RolePermissionService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +40,7 @@ public class RolePermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRolePermissionCount")
+    @ResponseBody
     public ResultMsg getRolePermissionCount( ) {
         return null;
     }
@@ -57,6 +57,7 @@ public class RolePermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRolePermissionList")
+    @ResponseBody
     public ResultMsg getRolePermissionList() {
         return null;
     }
@@ -77,6 +78,7 @@ public class RolePermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getPermissionsByRoleId")
+    @ResponseBody
     public ResultMsg getPermissionsByRoleId(Integer roleId) {
         return null;
     }
@@ -97,6 +99,7 @@ public class RolePermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRolesByPermissionId")
+    @ResponseBody
     public ResultMsg getRolesByPermissionId(Integer permissionId) {
         return null;
     }
@@ -117,7 +120,8 @@ public class RolePermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addPermissionToRole")
+    @PostMapping("addPermissionToRole")
+    @ResponseBody
     public ResultMsg addPermissionToRole(HttpServletRequest request) {
         return null;
     }
@@ -137,7 +141,8 @@ public class RolePermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addRolesToPermission")
+    @PostMapping("addRolesToPermission")
+    @ResponseBody
     public ResultMsg addRolesToPermission(HttpServletRequest request) {
         return null;
     }
@@ -157,7 +162,8 @@ public class RolePermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("removePermissionsFromRole")
+    @PutMapping("removePermissionsFromRole")
+    @ResponseBody
     public ResultMsg removePermissionsFromRole(HttpServletRequest request) {
         return null;
     }
@@ -177,7 +183,8 @@ public class RolePermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("removeRolesFromPermission")
+    @PutMapping("removeRolesFromPermission")
+    @ResponseBody
     public ResultMsg removeRolesFromPermission(HttpServletRequest request) {
         return null;
     }

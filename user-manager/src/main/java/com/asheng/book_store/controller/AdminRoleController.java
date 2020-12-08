@@ -7,9 +7,8 @@ import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.AdminRoleService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +42,7 @@ public class AdminRoleController {
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminRoleCount")
+    @ResponseBody
     public ResultMsg getAdminRoleCount() {
         return null;
     }
@@ -64,6 +64,7 @@ public class AdminRoleController {
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getRolesByAdminId")
+    @ResponseBody
     public ResultMsg getRolesByAdminId(Integer adminId) {
         return null;
     }
@@ -84,6 +85,7 @@ public class AdminRoleController {
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getAdminsByRoleId")
+    @ResponseBody
     public ResultMsg getAdminsByRoleId(Integer roleId) {
         return null;
     }
@@ -103,7 +105,8 @@ public class AdminRoleController {
             @ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addRolesToAdminByAdminId")
+    @PostMapping("addRolesToAdminByAdminId")
+    @ResponseBody
     public ResultMsg addRolesToAdminByAdminId(HttpServletRequest request) {
         return null;
     }
@@ -123,7 +126,8 @@ public class AdminRoleController {
             @ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addAdminsToRole")
+    @PostMapping("addAdminsToRole")
+    @ResponseBody
     public ResultMsg addAdminsToRole(HttpServletRequest request) {
         return null;
     }
@@ -143,7 +147,8 @@ public class AdminRoleController {
             @ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("removeRolesFromAdmin")
+    @PutMapping("removeRolesFromAdmin")
+    @ResponseBody
     public ResultMsg removeRolesFromAdmin(HttpServletRequest request) {
         return null;
     }
@@ -163,7 +168,8 @@ public class AdminRoleController {
             @ApiResponse(code = 400, message = "请求参数没填好"),
             @ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("removeAdminsFromRole")
+    @PutMapping("removeAdminsFromRole")
+    @ResponseBody
     public ResultMsg removeAdminsFromRole(HttpServletRequest request) {
         return null;
     }

@@ -4,10 +4,7 @@ import com.asheng.book_store.domain.BookCategory;
 import com.asheng.book_store.service.BookCategoryService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +34,7 @@ public class BookCategoryController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCategoryCount")
+    @GetMapping("/getBookCategoryCount")
     @ResponseBody
     public ResultMsg getBookCategoryCount(){
 
@@ -52,7 +49,7 @@ public class BookCategoryController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCategoryList")
+    @GetMapping("/getBookCategoryList")
     @ResponseBody
     public ResultMsg getBookCategoryList(){
 
@@ -74,7 +71,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCategoryBylimit")
+    @GetMapping("/getBookCategoryBylimit")
     @ResponseBody
     public ResultMsg getBookCategoryBylimit(Integer offset,Integer pageSize){
 
@@ -94,7 +91,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCategoryByBookCategoryId")
+    @GetMapping("/getBookCategoryByBookCategoryId")
     @ResponseBody
     public ResultMsg getBookCategoryByBookCategoryId(Integer bookCategoryId){
 
@@ -114,7 +111,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookCountByBookId")
+    @GetMapping("/getBookCountByBookId")
     @ResponseBody
     public ResultMsg getBookCountByBookCateporyId(Integer bookCategoryId){
 
@@ -134,7 +131,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addBookCategory")
+    @PostMapping("/addBookCategory")
     @ResponseBody
     public ResultMsg addBookCategory(BookCategory bookCategory){
 
@@ -154,7 +151,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookCategoryByBookCategoryId")
+    @PutMapping("/updateBookCategoryByBookCategoryId")
     @ResponseBody
     public ResultMsg updateBookCategoryByBookCategoryId(BookCategory bookCategory){
 
@@ -166,7 +163,7 @@ public class BookCategoryController {
      * @param bookCategoryId 图书分类ID
      * @return 返回影响的结果数
      */
-    @ApiOperation(value="执行图书种类信息的删除",notes="需要参数图书分类ID!")
+    @ApiOperation(value="执行图书种类信息的删除",notes="需要参数图书分类ID,物理删除!")
     @ApiImplicitParams({
             @ApiImplicitParam(name="bookCategoryId",value="图书分类ID",required=true,paramType="Integer")
     })
@@ -174,7 +171,7 @@ public class BookCategoryController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/deleteBookCategoryByBookCategoryId")
+    @DeleteMapping("/deleteBookCategoryByBookCategoryId")
     @ResponseBody
     public ResultMsg deleteBookCategoryByBookCategoryId(Integer bookCategoryId){
 

@@ -5,9 +5,8 @@ import com.asheng.book_store.domain.User;
 import com.asheng.book_store.service.PermissionService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +38,7 @@ public class PermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getPermissionCount")
+    @ResponseBody
     public ResultMsg getPermissionCount( ) {
         return null;
     }
@@ -54,6 +54,7 @@ public class PermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getPermissionList")
+    @ResponseBody
     public ResultMsg getPermissionList() {
         return null;
     }
@@ -75,6 +76,7 @@ public class PermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getPermissionListByLimit")
+    @ResponseBody
     public ResultMsg getPermissionListByLimit(Integer offset,Integer pageSize) {
         return null;
     }
@@ -94,6 +96,7 @@ public class PermissionController {
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @GetMapping("getPermissionByPermissionId")
+    @ResponseBody
     public ResultMsg getPermissionByPermissionId(Integer permissionId) {
         return null;
     }
@@ -112,7 +115,8 @@ public class PermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("updatePermissionByPermissionId")
+    @PutMapping("updatePermissionByPermissionId")
+    @ResponseBody
     public ResultMsg updatePermissionByPermissionId(Permission permission) {
         return null;
     }
@@ -131,7 +135,8 @@ public class PermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("addPermission")
+    @PostMapping("addPermission")
+    @ResponseBody
     public ResultMsg addPermission(Permission permission) {
         return null;
     }
@@ -142,7 +147,7 @@ public class PermissionController {
      * @param request 含有权限ID数组的对象
      * @return 删除的权限的数量
      */
-    @ApiOperation(value="删除一个权限的信息【可批量】",notes="数组对象使用request")
+    @ApiOperation(value="删除一个权限的信息【可批量】",notes="数组对象使用request,物理删除")
     @ApiImplicitParams({
             @ApiImplicitParam(name="request",value="含有权限ID数组的对象",required=true,paramType="HttpServletRequest")
     })
@@ -150,7 +155,8 @@ public class PermissionController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("deletePermissionByPermissionIds")
+    @DeleteMapping("deletePermissionByPermissionIds")
+    @ResponseBody
     public ResultMsg deletePermissionByPermissionIds(HttpServletRequest request) {
         return null;
     }

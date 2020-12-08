@@ -5,10 +5,7 @@ import com.asheng.book_store.domain.BookAbout;
 import com.asheng.book_store.service.BookAboutService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -39,7 +36,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutCount")
+    @GetMapping("/getBookAboutCount")
     @ResponseBody
     public ResultMsg getBookAboutCount(){
         return null;
@@ -58,7 +55,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutCountBybuyerId")
+    @GetMapping("/getBookAboutCountBybuyerId")
     @ResponseBody
     public ResultMsg getBookAboutCountBybuyerId(Integer buyerId){
 
@@ -79,7 +76,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutCountBySellerId")
+    @GetMapping("/getBookAboutCountBySellerId")
     @ResponseBody
     public ResultMsg getBookAboutCountBySellerId(Integer sellerId){
 
@@ -100,7 +97,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("getBookAboutByBookId")
+    @GetMapping("getBookAboutByBookId")
     @ResponseBody
     public ResultMsg getBookAboutByBookId(Integer bookId){
 
@@ -121,7 +118,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAllInfoByBookId")
+    @GetMapping("/getBookAllInfoByBookId")
     @ResponseBody
     public ResultMsg getBookAllInfoByBookId(Integer bookId){
 
@@ -142,7 +139,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBooksBySellerId")
+    @GetMapping("/getBooksBySellerId")
     @ResponseBody
     public ResultMsg getBooksBySellerId(Integer sellerId){
 
@@ -162,7 +159,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBooksByBuyerId")
+    @GetMapping("/getBooksByBuyerId")
     @ResponseBody
     public ResultMsg getBooksByBuyerId(Integer buyerId){
 
@@ -183,7 +180,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutListByBookIsbn")
+    @GetMapping("/getBookAboutListByBookIsbn")
     @ResponseBody
     public ResultMsg getBookAboutListByBookIsbn(String bookIsbn){
 
@@ -198,7 +195,7 @@ public class BookAboutController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutList")
+    @GetMapping("/getBookAboutList")
     @ResponseBody
     public ResultMsg getBookAboutList(){
 
@@ -220,7 +217,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getBookAboutListByLimit")
+    @GetMapping("/getBookAboutListByLimit")
     @ResponseBody
     public ResultMsg getBookAboutListByLimit(Integer offset,Integer pageSize){
 
@@ -240,7 +237,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookAboutByBookAboutId")
+    @PutMapping("/updateBookAboutByBookAboutId")
     @ResponseBody
     public ResultMsg updateBookAboutByBookAboutId(BookAbout bookAbout){
 
@@ -260,7 +257,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateBookAboutStateOffShelf")
+    @PutMapping("/updateBookAboutStateOffShelf")
     @ResponseBody
     public ResultMsg updateBookAboutStateOffShelf(Integer bookId){
 
@@ -281,7 +278,7 @@ public class BookAboutController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addBookAboutBySeller")
+    @PostMapping("/addBookAboutBySeller")
     @ResponseBody
     public ResultMsg addBookAboutByUser(BookAbout bookAbout){
 

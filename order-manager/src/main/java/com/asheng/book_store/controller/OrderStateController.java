@@ -5,10 +5,7 @@ import com.asheng.book_store.domain.OrderState;
 import com.asheng.book_store.service.OrderStateService;
 import com.asheng.book_store.utils.ResultMsg;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,7 +35,7 @@ public class OrderStateController {
     @ApiResponses({
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderStateCount")
+    @GetMapping("/getOrderStateCount")
     @ResponseBody
     public ResultMsg getOrderStateCount(){
 
@@ -60,7 +57,7 @@ public class OrderStateController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderStateByOrderStateId")
+    @GetMapping("/getOrderStateByOrderStateId")
     @ResponseBody
     public ResultMsg getOrderStateByOrderStateId(Integer orderStateId){
 
@@ -79,7 +76,7 @@ public class OrderStateController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/getOrderStateList")
+    @GetMapping("/getOrderStateList")
     @ResponseBody
     public ResultMsg getOrderStateList(){
 
@@ -100,7 +97,7 @@ public class OrderStateController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/updateOrderStateByOrderStateId")
+    @PutMapping("/updateOrderStateByOrderStateId")
     @ResponseBody
     public ResultMsg updateOrderStateByOrderStateId(OrderState orderState){
 
@@ -120,7 +117,7 @@ public class OrderStateController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/addOrderState")
+    @PostMapping("/addOrderState")
     @ResponseBody
     public ResultMsg addOrderState(OrderState orderState){
 
@@ -133,7 +130,7 @@ public class OrderStateController {
      * @param orderStateId 要删除的订单状态Id
      * @return 删掉的记录数
      */
-    @ApiOperation(value="删除订单状态信息",notes="参数订单状态ID!")
+    @ApiOperation(value="删除订单状态信息",notes="参数订单状态ID!物理删除")
     @ApiImplicitParams({
             @ApiImplicitParam(name="orderStateId",value="要删除的订单状态Id",required=true,paramType="Integer")
     })
@@ -141,7 +138,7 @@ public class OrderStateController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping("/deleteOrderStateByOrderStateId")
+    @DeleteMapping("/deleteOrderStateByOrderStateId")
     @ResponseBody
     public ResultMsg deleteOrderStateByOrderStateId(Integer orderStateId){
 
