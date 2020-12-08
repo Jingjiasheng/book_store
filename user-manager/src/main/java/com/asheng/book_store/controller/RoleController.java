@@ -75,7 +75,7 @@ public class RoleController {
             @ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @GetMapping("getRoleList")
+    @GetMapping("getRoleListByLimit")
     public ResultMsg getRoleListByLimit(Integer offset,Integer pageSize ) {
         return null;
     }
