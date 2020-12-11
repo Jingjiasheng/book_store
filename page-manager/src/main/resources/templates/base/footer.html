@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>头部</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+<body>
+
+
+<div th:fragment="footer">
+    <div class="layui-footer" style="height: 40px;text-align: center;opacity: 50%">
+        <!-- 底部固定区域 -->
+        © A_sheng - J_jiasheng@qq.com
+    </div>
+</div>
+
+
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/layui/lay/modules/jquery.js}"></script>
+<script type="text/javascript"></script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>权限管理后台</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+</head>
+<style th:inline="text">
+    .layui-body {
+        background: url("[[@{/}]]imgs/indexbg.jpg");
+        background-repeat: round;
+    }
+</style>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+
+
+    <div th:replace="base/header :: header"></div>
+
+
+    <div th:replace="base/left :: left"></div>
+
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+
+        <div style="padding: 15px; width: 100%;height: 100%;text-align: center;line-height: 500px">
+            <h1>欢迎进入<b>A_sheng</b>的权限管理系统</h1>
+        </div>
+    </div>
+
+
+    <div th:replace="base/footer::footer"></div>
+
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/layui/lay/modules/jquery.js}"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

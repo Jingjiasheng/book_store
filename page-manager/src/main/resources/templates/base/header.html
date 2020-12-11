@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>头部</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+<body>
+
+
+<div th:fragment="header">
+
+    <div class="layui-header layui-bg-blue">
+        <div class="layui-logo"><img th:src="@{/imgs/logo.png}" width="100%" height="100%"></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item "><a href="">控制台</a></li>
+            <li class="layui-nav-item "><a href="">商品管理</a></li>
+            <li class="layui-nav-item "><a href="">用户</a></li>
+            <li class="layui-nav-item ">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+
+        <ul class="layui-nav layui-layout-right layui-bg-black">
+            <li class="layui-nav-item ">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child ">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item "><a href="">退了</a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/layui/lay/modules/jquery.js}"></script>
+<script type="text/javascript">
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+
+</script>
+
+</html>

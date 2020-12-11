@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>权限管理后台</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+
+
+    <div th:replace="base/header :: header"></div>
+
+
+    <div th:replace="base/left :: left"></div>
+
+
+    <div class="layui-body">
+        <h1>城市信息列表</h1>
+        <table id="demo" lay-filter="test"></table>
+    </div>
+
+
+    <div th:replace="base/footer::footer"></div>
+
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/layui/lay/modules/jquery.js}"></script>
+<script type="text/javascript" th:inline="none">
+    //JavaScript代码区域
+    layui.use(['element', 'table', 'layer'], function () {
+        var table = layui.table,
+            layer = layui.layer,
+            $ = layui.$,
+            element = layui.element;
+
+        //第一个实例
+        table.render({
+            id: 'permissionTable'
+            , elem: '#demo'
+            , toolbar: '#toolbarDemo'
+            , defaultToolbar: ['filter', 'print', 'exports', {
+                title: '提示' //标题
+                , layEvent: 'LAYTABLE_TIPS' //事件名，用于 toolbar 事件中使用
+                , icon: 'layui-icon-tips' //图标类名
+            }]
+            , width: '100%'
+            , height: 'full-130'
+            , url: '/permission/getAll' //数据接口
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.retCode, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "count": res.count, //解析数据长度
+                    "data": res.data //解析数据列表
+                };
+            }
+            , page: true //开启分页
+            , cols: [[ //表头
+                {field: 'permissionId', title: 'ID', sort: true, fixed: 'left', type: 'checkbox', width: 50}
+                , {field: 'permissionName', title: '权限简要', width: 300}
+                , {field: 'permissionUrl', title: '权限请求路径', sort: true, width: 1000}
+                , {fixed: 'right', title: '操作', align: 'center', toolbar: '#barDemo', event: 'tool', width: 200}
+            ]]
+        });
+
+//监听头工具栏事件
+        table.on('toolbar(test)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'add':
+
+                    layer.msg('添加权限');
+                    layer.open({
+                        id: 1,
+                        type: 2,
+                        title: '权限信息',
+                        shadeClose: true,
+                        shade: 0.5,
+                        area: ['500px', '90%'],
+                        content: '/permissionPage/permissionAdd' //iframe的url
+                    });
+                    break;
+                case 'delete':
+                    var permissionIds = [];
+                    console.log(checkStatus.data);
+                    for (var i in checkStatus.data) {
+                        permissionIds.push(checkStatus.data[i].userId);
+                    }
+                    layer.confirm("确定删除这些权限吗？" + permissionIds, function () {
+                        $.ajax({
+                            type: 'POST'
+                            , contentType: "application/x-www-form-urlencoded"
+                            , data: {'permissionIds': permissionIds}
+                            , url: "../permission/deletePermissionById"
+                            // , context: document.body
+                            , success: function (data) {
+                                layer.alert(data.message);
+                                $('#demo').reload();
+                            }
+                            , error: function (res) {
+                                layer.alert(res.message)
+                            }
+                        });
+                    })
+                    break;
+                case 'update':
+                    layer.msg('编辑');
+                    break;
+            }
+            ;
+        });
+
+
+//监听行尾工具条事件
+        table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            var permissionId = obj.data.permissionId;
+            if (layEvent === 'detail') { //查看
+                layer.open({
+                    id: 1,
+                    type: 2,
+                    title: '用户信息',
+                    shadeClose: true,
+                    shade: 0.5,
+                    area: ['500px', '90%'],
+                    content: '/permissionPage/permissionGetById?permissionId=' + permissionId //iframe的url
+                });
+            } else if (layEvent === 'del') { //删除
+                var permissionIds = [];
+                layer.confirm('真的删除行么' + permissionId, function (index) {
+                    permissionIds.push(permissionId);
+                    $.ajax({
+                        type: 'POST'
+                        , contentType: "application/x-www-form-urlencoded"
+                        , data: {'permissionIds': permissionIds}
+                        , url: '../permission/deletePermissionById'
+                        // , context: document.body
+                        , success: function (data) {
+                            layer.alert(data.message);
+                            // $('#demo').reload();
+                        }
+                        , error: function (res) {
+                            layer.alert(res.message)
+                        }
+                    });
+                });
+            } else if (layEvent === 'edit') { //编辑
+                layer.open({
+                    id: 1,
+                    type: 2,
+                    title: '用户信息',
+                    shadeClose: true,
+                    shade: 0.5,
+                    area: ['500px', '90%'],
+                    content: '/permissionPage/permissionUpdate?permissionId=' + data.permissionId //iframe的url
+                });
+            } else if (layEvent === 'LAYTABLE_TIPS') {
+                layer.alert('Hi，头部工具栏扩展的右侧图标。');
+            }
+        });
+
+        //监听单选框事件
+        table.on('edit(test)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+            console.log(obj.value); //得到修改后的值
+            console.log(obj.field); //当前编辑的字段名
+            console.log(obj.data); //所在行的所有相关数据
+        });
+
+    });
+
+</script>
+<!--头工具栏定义按钮-->
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+    </div>
+</script>
+
+<!--行尾工具栏-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+    <!-- 这里同样支持 laytpl 语法，如： -->
+    {{#  if(d.auth > 2){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>
+    {{#  } }}
+</script>
+</body>
+</html>

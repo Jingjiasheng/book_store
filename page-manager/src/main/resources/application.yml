@@ -1,0 +1,25 @@
+spring:
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
+    prefix: classpath:/templates/
+  web:
+    resources:
+      static-locations: classpath:/static/
+  application:
+    name: Ò³ÃæÌø×ª¿ØÖÆ
+server:
+  port: 8484
+  servlet:
+    context-path: /page-manager
+
+################## EurekaÅäÖÃ ################
+eureka:
+  client:
+    service-url:
+      defaultZone: http://42.192.84.4:8761/eureka,http://42.192.84.4:8760/eureka

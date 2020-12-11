@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>左边</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+<body>
+
+
+<h1>要知道来到这里不容易</h1>
+
+
+<div th:fragment="left">
+    <div class="layui-side layui-bg-blue">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">图书管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/book/bookList}">基本图书信息管理</a></dd>
+                        <dd><a th:href="@{/bookAbout/bookAboutList}">发布图书信息管理</a></dd>
+                        <dd><a th:href="@{/bookCategory/bookCategoryList}">图书类别管理</a></dd>
+                        <dd><a th:href="@{/bookPress/bookPressList}">图书出版社管理</a></dd>
+                        <dd><a th:href="@{/bookState/bookStateList}">图书状态管理</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">订单管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/order/orderList}">订单列表管理</a></dd>
+                        <dd><a th:href="@{/orderState/orderStateList}">订单状态管理</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">城市信息管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/city/cityList}">城市信息列表</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户信息管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/user/userList}">用户信息管理</a></dd>
+                        <dd><a th:href="@{/user/adminList}">普通管理员信息管理</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">管理员操作日志</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/operation_log/operationList}">日志操作列表</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">管理员权限管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/admin/adminList}">管理员管理</a></dd>
+                        <dd><a th:href="@{/role/roleList}">角色管理</a></dd>
+                        <dd><a th:href="@{/permission/permissionList}">权限管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/layui/lay/modules/jquery.js}"></script>
+<script type="text/javascript">
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+
+</script>
+
+</html>
